@@ -1860,3 +1860,66 @@ footer > p {
         transform-origin: center;
     }
 }
+
+
+@media screen and (max-width: 789px) {
+    /* 1. 白い楕円を「縦並び」にする */
+    .feature-text {
+        height: auto !important;
+        display: flex !important;
+        flex-direction: column !important; /* 縦に並べる */
+        align-items: center !important;    /* 中央寄せ */
+        padding: 40px 20px !important;
+        position: relative !important;
+    }
+
+    /* 2. テキスト部分：幅を広げて中央に */
+    .feature-text > div:first-child {
+        width: 100% !important;
+        text-align: left; /* リストは見やすいように左寄せ（中央寄せなら center） */
+        margin-bottom: 30px !important; /* 画像との隙間 */
+        position: static !important;
+    }
+
+    /* 3. 画像エリア：バラバラの位置設定を全てリセットして横に並べる */
+    .feature-images-sample {
+        position: static !important;   /* 浮いているのを解除 */
+        display: flex !important;
+        flex-direction: row !important; /* 横に並べる */
+        justify-content: center !important;
+        align-items: center !important;
+        width: 100% !important;
+        margin: 0 auto !important;
+        padding: 0 !important;
+        transform: none !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+    }
+
+    /* 4. 画像1枚ずつ：マイナスマージンで重ねる */
+    .scratch-item {
+        position: relative !important;
+        width: 100px !important;   /* スマホで見やすいサイズ */
+        margin: 0 -20px !important; /* ★左右をマイナスにして重ねる */
+        top: auto !important;      /* バラバラの上下位置をリセット */
+        left: auto !important;     /* バラバラの左右位置をリセット */
+        right: auto !important;
+        bottom: auto !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        transform: none !important;
+    }
+
+    /* 重なり順（右側を上に） */
+    .scratch-item:nth-child(1) { z-index: 1; }
+    .scratch-item:nth-child(2) { z-index: 2; }
+    .scratch-item:nth-child(3) { z-index: 3; }
+
+    .scratch-item img {
+        width: 100% !important;
+        height: auto !important;
+        display: block !important;
+        border-radius: 5px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+}

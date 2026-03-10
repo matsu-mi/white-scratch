@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>ハッピー白スクラッチ</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=M+PLUS+Rounded+1c:wght@400;700;900&display=swap" rel="stylesheet">
+	<!-- ↑フォント変えたからなくてもいいか、もしくは変更した方がいいかも -->
+	<link href="./common/style.css" rel="stylesheet">
+</head>
+<body>
+
+<!-- ====== MOBILE NAV ====== -->
+<div class="mobile-nav-overlay" id="mobileNav">
+	<button class="mobile-nav-close" onclick="closeMobileNav()">✕</button>
+	<a href="#features" onclick="closeMobileNav()">白スクラッチの特長</a>
+	<a href="#scenes" onclick="closeMobileNav()">活用シーン</a>
+	<a href="#benefits" onclick="closeMobileNav()">白スクラッチとは</a>
+	<a href="#flow" onclick="closeMobileNav()">ご依頼の流れ</a>
+	<a href="#pricing" onclick="closeMobileNav()">料金例</a>
+	<a href="#faq" onclick="closeMobileNav()">よくある質問</a>
+	<a href="https://business.form-mailer.jp/lp/c951b586337417" onclick="closeMobileNav()" style="background:var(--green);color:#fff;padding:14px 32px;border-radius:30px;">お問い合わせ</a>
+</div>
+
+<!-- ====== HEADER ====== -->
+<header>
+	<div class="header-inner">
+		<div class="header-logo"><img src="./images/scratch-logo.png" alt="ハッピー白スクラッチ"></div>
+		<nav>
+			<a href="#features">白スクラッチの特長</a>
+			<a href="#scenes">活用シーン</a>
+			<a href="#benefits">白スクラッチとは</a>
+			<a href="#flow">ご依頼の流れ</a>
+			<a href="#pricing">料金例</a>
+			<a href="#faq">よくある質問</a>
+			<a href="https://business.form-mailer.jp/lp/c951b586337417" class="btn-cta-header" target="_blank" rel="noopener noreferrer">お問い合わせ</a>
+		</nav>
+		<button class="mobile-menu-btn" onclick="openMobileNav()" aria-label="メニューを開く">
+			<span></span><span></span><span></span>
+		</button>
+	</div>
+</header>
+
+<!-- ====== HERO ====== -->
+<section class="hero">
+	<div class="hero-inner">
+		<div class="hero-text">
+			<div><img src="./images/scratch-logo.png" alt="ハッピー白スクラッチ"></div>
+			<h2 class="hero-title">
+				<span class="text-dots">
+					<span>削</span><span>り</span><span>カ</span><span>ス</span>
+				</span>
+				<span class="text-sub">が</span>出ない<span class="text-sub">から</span><br>
+				飲食店<span class="text-sub">や</span>病院<span class="text-sub">でも</span>使<span class="text-sub">える</span><br>
+				お子様<span class="text-sub">や</span>ペット<span class="text-sub">がいても</span>安心！
+			</h2>
+			<p class="hero-desc">
+				独自技術で削りカスゼロを実現。<br>
+				どんな場所でも安心してお使いいただけるスクラッチカードです。
+			</p>
+			<a href="https://business.form-mailer.jp/lp/c951b586337417" class="btn-primary" target="_blank" rel="noopener noreferrer">サンプルはこちら<span class="arrow">▶︎</span></a>
+		</div>
+
+		<!-- ===== スクラッチアニメーション ===== -->
+		<div class="scratch-container">
+			<p><img src="./images/top-image.png" alt=""></p>
+			<!-- <div class="under-image">削りかすが出ない<br>白スクラッチ！</div> -->			
+			<svg class="scratch-svg" viewBox="0 0 450 450">
+				<defs>
+					<mask id="scratch-mask">
+						<rect width="100%" height="100%" fill="white" />
+						<path class="scratch-path" 
+							d="M26.2,124.5c39.6-30.4,77.5-73.7,118.5-94.3C99,51.4,62.8,121,22.6,170.8C88,105.8,169.4,95.7,228.9,15C161.2,111.1,89.6,195.2,15,266.2C123.2,189,245.7,129.1,343.6,20.4C239.4,73.1,140.2,285.2,30,350.5c110.2-71.3,233.1-112.1,329.2-249.1c-78.9,91.9-157.8,183.8-236.6,275.8c88.9-71.3,177.1-146.8,264.5-226.3C316.8,242,238.7,305.5,165.2,384.6c61.5-52.9,122.4-109.3,182.4-169c-35.3,79.7-82.4,135.2-123.8,200.5c48.6-44.4,97.9-85.7,147.7-123.7c-28.7,62.1-69.8,97.3-104.9,142.6c54.9-53.9,111.1-102,168.4-144.2c-18.6,40.9-38.9,78.5-60.7,112.1"
+							fill="none" 
+							stroke="black" 
+							stroke-width="100" 
+							stroke-linecap="butt" 
+							stroke-linejoin="miter" />
+					</mask>
+				</defs>
+				<!-- 隠す層 -->
+				<image href="./images/scratch.png" width="100%" height="100%" mask="url(#scratch-mask)" />
+				<!-- <rect width="100%" height="100%" fill="#C0C0C0" mask="url(#scratch-mask)" /> -->
+			</svg>
+		</div>
+	</div>
+</section>
+
+<!-- ====== FEATURES (Wチャンス) ====== -->
+<section class="features-section" id="features">
+	<div class="features-inner">
+		<div class="feature-images">
+			<div class="feature-images-before">
+				<div class="feature-images-balloon">
+					<div class="balloon">
+						ぱっと見は普通の<br>カードだけど
+					</div>
+					<img src="./images/feature-image-before.png" alt="">
+				</div>
+				<div>
+					<img src="./images/feature-image-before-up.png" alt="">
+				</div>
+			</div>
+			<div class="feature-images-arrow">
+				<p>▶︎</p>
+			</div>
+			<div class="feature-images-after">
+				<div>
+					<p>絵柄が現れる！</p>
+					<img src="./images/feature-image-after.png" alt="">
+				</div>
+			</div>
+		</div>
+		<div class="feature-text">
+			<div>
+				<h3><span>Features</span><br>白スクラッチの特長</h3>
+				<ul>
+					<li>削りカスが出ないから衛生的！</li>
+					<li>コストが安い！</li>
+					<li>短納期！</li>
+				</ul>
+			</div>
+			<div class="feature-images-sample">
+				<p class="scratch-item item-green">
+					<img src="./images/scratch-sample01.png" alt="スクラッチ緑">
+				</p>
+				<p class="scratch-item item-orange">
+					<img src="./images/scratch-sample02.png" alt="スクラッチオレンジ">
+				</p>
+				<p class="scratch-item item-blue">
+					<img src="./images/scratch-sample03.png" alt="スクラッチブルー">
+				</p>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- ====== scenes-section ====== -->
+<section class="scenes-section" id="scenes">
+	<div class="section-inner">
+		<h3 class="section-title"><span>Case</span><br>活用シーン</h3>
+		<div class="scenes-grid">
+			<div class="scene-card">
+				<div class="scene-img-placeholder"><img src="./images/case-image-01.png" alt=""></div>
+				<div class="scene-body">
+					<div class="sub-title u-text-left">飲食店</div>
+					<p class="scene-desc">レストランやカフェ、居酒屋などの飲食店で、お食事中のお客様にも安心してお渡しいただけます。削りカスが出ないので衛生面も万全です。</p>
+				</div>
+			</div>
+			<div class="scene-card">
+				<div class="scene-img-placeholder"><img src="./images/case-image-02.png" alt=""></div>
+				<div class="scene-body">
+					<div class="sub-title u-text-left">病院・クリニック</div>
+					<p class="scene-desc">病院やクリニック、歯科医院など衛生管理が必要な場所でも安心してご利用いただけます。待合室でのアトラクションとしても最適です。</p>
+				</div>
+			</div>
+			<div class="scene-card">
+				<div class="scene-img-placeholder"><img src="./images/case-image-03.png" alt=""></div>
+				<div class="scene-body">
+					<div class="sub-title u-text-left">イベント・催事場</div>
+					<p class="scene-desc">各種イベントや催事、展示会など多くの方が集まる場所でも使用可能。子供から大人まで楽しめる集客アイテムとして大活躍します。</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="section-point">
+		<p>売上<span class="text-sub">や</span>ファンづくり<span class="text-sub">に</span>ダイレクトに効く！</p>
+	</div>
+</section>
+<!-- ===== /scenes-section ===== -->
+
+
+<!-- ====== benefits-section ====== -->
+<section class="benefits-section" id="benefits">
+	<div class="benefits-inner">
+		<div class="benefits-content">
+			<div class="section-point">最安で作成できる特殊印刷です！</div>
+			<p class="benefit-desc">白スクラッチとは、印刷物の上に特殊なインキを乗せ、特定の硬貨で削ると金属に反応し、情報を表示させるスクラッチ加工技術です。昔ながらの銀スクラッチに対して、特殊な工程が不要です。下地の文字・番号などを見えにくくするパターンを合わせて印刷することで、隠蔽性を上げています。白スクラッチは、デザインとの親和性が高く、紙面の色調やビジュアル設計に合わせた自然な仕上がりが可能なため、各種キャンペーン印刷物や再来店クーポンで採用されています。</p>
+		</div>
+		<div class="benefits-visual">
+			<img src="./images/benefit-image.png" alt="">
+		</div>
+	</div>
+</section>
+<!-- ===== /benefits-section ===== -->
+
+<!-- ====== FLOW ====== -->
+<section class="flow-section" id="flow">
+	<div class="section-inner">
+		<h3 class="section-title"><span>Flow</span><br>ご依頼の流れ</h3>
+		<div class="flow-lead">
+			<p>イラストレータ・またはPDFでデザインデータをご支給ください。</p>
+			<small class="c-note u-text-left">※スクラッチ部分は別データ（別レイヤー）にて作成ください<br>※データ作成ができない場合、デザインデータの作成も承ります</small>
+		</div>
+		<div class="flow-items">
+			<div class="flow-step">
+				<div class="flow-num">STEP 01</div>
+				<div class="sub-title">お問合わせ</div>
+				<p class="flow-desc">まずはお問合わせから。枚数・用途・デザインデータの有無などお知らせください。</p>
+			</div>
+			<div class="flow-step">
+				<div class="flow-num">STEP 02</div>
+				<div class="sub-title">お見積り</div>
+				<p class="flow-desc">お問合わせ後、お見積りをいたします。OKでしたら正式にご発注ください。</p>
+			</div>
+			<div class="flow-step">
+				<div class="flow-num">STEP 03</div>
+				<div class="sub-title">データご支給</div>
+				<p class="flow-desc">データをご支給ください。印刷内容とは別に、クジ（スクラッチの絵柄・文字）のデータが必要になります。</p>
+			</div>
+			<div class="flow-step">
+				<div class="flow-num">STEP 04</div>
+				<div class="sub-title">納品</div>
+				<p class="flow-desc">データチェック後、問題がなければ1週間〜10日程度で納品いたします。</p>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- ====== PRICING ====== -->
+<section class="pricing-section" id="pricing">
+	<div class="section-inner">
+		<h3 class="section-title"><span>Price</span><br>料金例</h3>
+		<p class="sub-title u-text-center">カードなど小さいものから<br>大きいサイズの印刷物まで対応可能です！</p>
+		<p>詳しくはお問い合わせください</p>
+		<a href="https://business.form-mailer.jp/lp/c951b586337417" class="btn-primary" target="_blank" rel="noopener noreferrer">
+			サンプルはこちら <span class="arrow">▶︎</span>
+		</a>
+		</div>
+	</div>
+</section>
+
+<!-- ====== FAQ ====== -->
+<section class="faq-section" id="faq">
+	<div class="section-inner">
+		<h3 class="section-title"><span>FAQ</span><br>よくある質問</h3>
+		<div class="faq-list">
+			<div class="faq-item">
+				<div class="faq-q" onclick="toggleFaq(this)">
+					<div class="faq-q-icon">Q</div>
+					<div class="faq-q-text">銀スクラッチとの違いは何ですか？</div>
+					<div class="faq-toggle"></div>
+				</div>
+				<div class="faq-a">
+					<p class="faq-a-text">隠蔽層の色が異なります。白スクラッチはデザインに馴染みやすく、背景色やブランドカラーに合わせた紙面設計がしやすいのが特徴です。見た目を自然に保ったまま隠蔽加工ができます。</p>
+				</div>
+			</div>
+
+			<div class="faq-item">
+				<div class="faq-q" onclick="toggleFaq(this)">
+					<div class="faq-q-icon">Q</div>
+					<div class="faq-q-text">どんな印刷物に使えますか？</div>
+					<div class="faq-toggle"></div>
+				</div>
+				<div class="faq-a">
+					<p class="faq-a-text">カード、DM、チラシ、キャンペーン台紙、シリアルコードカード、応募券など、平面の印刷物であれば幅広く対応可能です。用紙やサイズについては仕様確認のうえ調整します。</p>
+				</div>
+			</div>
+
+			<div class="faq-item">
+				<div class="faq-q" onclick="toggleFaq(this)">
+					<div class="faq-q-icon">Q</div>
+					<div class="faq-q-text">削れにくすぎたり、逆に簡単に剥がれたりしませんか？</div>
+					<div class="faq-toggle"></div>
+				</div>
+				<div class="faq-a">
+					<p class="faq-a-text">サンプルにてご確認いただけます。紙ですので、あまり強くこすると破れる可能性があります。</p>
+				</div>
+			</div>
+
+			<div class="faq-item">
+				<div class="faq-q" onclick="toggleFaq(this)">
+					<div class="faq-q-icon">Q</div>
+					<div class="faq-q-text">デザインデータを作る際の注意点はありますか？</div>
+					<div class="faq-toggle"></div>
+				</div>
+				<div class="faq-a">
+					<p class="faq-a-text">スクラッチ部分のサイズ、位置、下地の色、文字サイズなどに推奨設計があります。入稿前にガイドラインをご案内できますので、制作段階でご相談いただくとスムーズです。</p>
+				</div>
+			</div>
+
+			<div class="faq-item">
+				<div class="faq-q" onclick="toggleFaq(this)">
+					<div class="faq-q-icon">Q</div>
+					<div class="faq-q-text">スクラッチ部分の形は自由にできますか？</div>
+					<div class="faq-toggle"></div>
+				</div>
+				<div class="faq-a">
+					<p class="faq-a-text">四角形・円形・帯状などの基本形状のほか、レイアウトに合わせた設計が可能です。内容が読めない隠蔽面積を確保することが前提となります。</p>
+				</div>
+			</div>
+
+			<div class="faq-item">
+				<div class="faq-q" onclick="toggleFaq(this)">
+					<div class="faq-q-icon">Q</div>
+					<div class="faq-q-text">少ロットでも対応できますか？</div>
+					<div class="faq-toggle"></div>
+				</div>
+				<div class="faq-a">
+					<p class="faq-a-text">内容と仕様によります。キャンペーン用途などで少部数対応が可能なケースもありますので、まずは部数・仕様をご相談ください。</p>
+				</div>
+			</div>
+		</div>
+
+		<div class="faq-cta">
+			<a href="https://business.form-mailer.jp/lp/c951b586337417" class="btn-primary" target="_blank" rel="noopener noreferrer">まずはお問い合わせ<span class="arrow">▶︎</span></a>
+		</div>
+	</div>
+</section>
+
+<!-- ====== FOOTER ====== -->
+<footer>
+	<div class="footer-wrapper u-stack">
+		<div class="company-info">
+			<div class="footer-logo"><a href="https://handa-cp.co.jp/"><img src="images/hcp-logo.png" alt="半田中央印刷"></a></div>
+			<p>475-0032<br>愛知県半田市潮干町1番地の21</p>
+			<a href="tel:0569-29-2525">0569-29-2525</a>
+			<!-- <a href="https://handa-cp.co.jp/" target="_blank" rel="noopener noreferrer" class="btn-primary">会社ホームページ</a> -->
+		</div>
+		<ul>
+			<li><a href="#features">白スクラッチの特長</a></li>
+			<li><a href="#scenes">活用シーン</a></li>
+			<li><a href="#benefits">白スクラッチとは</a></li>
+			<li><a href="#flow">ご依頼の流れ</a></li>
+			<li><a href="#pricing">料金例</a></li>
+			<li><a href="#faq">よくある質問</a></li>
+		</ul>
+	</div>
+	<p>©Handa-cp Co., Ltd. All Rights Reserved.</p>
+</footer>
+
+<script src="./common/script.js"></script>
+</body>
+</html>

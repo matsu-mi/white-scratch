@@ -1,0 +1,1275 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ハッピー白スクラッチ</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=M+PLUS+Rounded+1c:wght@400;700;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green: #7dc044;
+      --green-dark: #5fa02e;
+      --green-light: #d4edaa;
+      --yellow: #f5d800;
+      --yellow-dark: #e5c900;
+      --cream: #f5f5dc;
+      --cream-light: #fafae8;
+      --white: #ffffff;
+      --black: #222222;
+      --gray: #666666;
+      --gray-light: #f0f0f0;
+      --max-w: 1400px;
+      --side-pad: clamp(20px, 4vw, 60px);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Noto Sans JP', sans-serif;
+      color: var(--black);
+      background: #fff;
+      overflow-x: hidden;
+    }
+
+    /* ========== HEADER ========== */
+    header {
+      background: #fff;
+      border-bottom: 1px solid #e0e0e0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+    .header-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 10px var(--side-pad);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+    .header-logo {
+      font-family: 'M PLUS Rounded 1c', sans-serif;
+      font-size: clamp(14px, 2vw, 18px);
+      font-weight: 900;
+      color: var(--green);
+      white-space: nowrap;
+    }
+    nav {
+      display: flex;
+      align-items: center;
+      gap: clamp(12px, 2.5vw, 28px);
+    }
+    nav a {
+      text-decoration: none;
+      color: var(--black);
+      font-size: clamp(11px, 1.2vw, 13px);
+      font-weight: 500;
+      white-space: nowrap;
+      transition: color 0.2s;
+    }
+    nav a:hover { color: var(--green); }
+    .btn-cta-header {
+      background: var(--green);
+      color: #fff !important;
+      padding: 10px 20px;
+      border-radius: 30px;
+      font-weight: 700;
+      font-size: clamp(11px, 1.2vw, 13px) !important;
+      transition: background 0.2s, transform 0.1s;
+    }
+    .btn-cta-header:hover {
+      background: var(--green-dark);
+      transform: translateY(-1px);
+    }
+
+    /* ========== HERO ========== */
+    .hero {
+      background: var(--cream-light);
+      padding: 60px var(--side-pad);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      bottom: -30px; left: 0; right: 0;
+      height: 60px;
+      background: var(--green);
+      clip-path: polygon(0 100%, 100% 100%, 100% 40%, 50% 0%, 0 40%);
+    }
+    .hero-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: center;
+    }
+    .hero-label {
+      display: inline-block;
+      background: var(--green);
+      color: #fff;
+      font-size: 13px;
+      font-weight: 700;
+      padding: 4px 14px;
+      border-radius: 4px;
+      margin-bottom: 16px;
+    }
+    .hero-title {
+      font-family: 'M PLUS Rounded 1c', sans-serif;
+      font-size: clamp(26px, 3.5vw, 44px);
+      font-weight: 900;
+      line-height: 1.4;
+      color: var(--black);
+      margin-bottom: 20px;
+    }
+    .hero-title em {
+      color: var(--green);
+      font-style: normal;
+    }
+    .hero-desc {
+      font-size: clamp(14px, 1.3vw, 16px);
+      line-height: 1.8;
+      color: #444;
+      margin-bottom: 32px;
+    }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--yellow);
+      color: var(--black);
+      font-size: clamp(14px, 1.4vw, 16px);
+      font-weight: 700;
+      padding: 16px 32px;
+      border-radius: 40px;
+      text-decoration: none;
+      box-shadow: 0 4px 0 var(--yellow-dark);
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+    .btn-primary:hover {
+      transform: translateY(2px);
+      box-shadow: 0 2px 0 var(--yellow-dark);
+    }
+    .btn-primary .arrow { font-size: 18px; }
+
+    .hero-image {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* --- スクラッチアニメーション --- */
+    .scratch-container {
+      position: relative;
+      width: 100%;
+      max-width: 450px;
+      aspect-ratio: 1 / 1;
+      background: #eee;
+      overflow: hidden;
+      border-radius: 16px;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.18);
+    }
+    .under-image {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--green);
+      color: white;
+      font-size: clamp(22px, 3.5vw, 36px);
+      font-weight: 900;
+      font-family: 'M PLUS Rounded 1c', sans-serif;
+      z-index: 1;
+      text-align: center;
+      line-height: 1.6;
+    }
+    .scratch-svg {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      z-index: 2;
+    }
+
+
+    /* ========== SECTION COMMON ========== */
+    section { padding: 70px var(--side-pad); }
+    .section-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+    }
+    .section-title {
+      font-family: 'M PLUS Rounded 1c', sans-serif;
+      font-size: clamp(22px, 3vw, 36px);
+      font-weight: 900;
+      text-align: center;
+      margin-bottom: 40px;
+      position: relative;
+      padding-bottom: 16px;
+    }
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 50%;
+      transform: translateX(-50%);
+      width: 60px; height: 4px;
+      background: var(--green);
+      border-radius: 2px;
+    }
+
+    /* ========== FEATURES (Wチャンス) ========== */
+    .features-section {
+      background: var(--green);
+      padding: 60px var(--side-pad);
+      position: relative;
+    }
+    .features-section::before,
+    .features-section::after {
+      content: '';
+      position: absolute;
+      left: 0; right: 0;
+      height: 40px;
+    }
+    .features-section::before {
+      top: -1px;
+      background: var(--cream-light);
+      clip-path: polygon(0 0, 100% 0, 100% 0, 50% 100%, 0 0);
+    }
+    .features-section::after {
+      bottom: -1px;
+      background: #fff;
+      clip-path: polygon(0 100%, 100% 100%, 100% 100%, 50% 0, 0 100%);
+    }
+    .features-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      align-items: center;
+    }
+    .feature-badge-big {
+      background: var(--yellow);
+      border-radius: 16px;
+      padding: 30px;
+      text-align: center;
+      position: relative;
+      box-shadow: 0 8px 0 var(--yellow-dark);
+    }
+    .feature-badge-big .w-chance {
+      font-family: 'M PLUS Rounded 1c', sans-serif;
+      font-size: clamp(40px, 6vw, 80px);
+      font-weight: 900;
+      color: var(--green);
+      line-height: 1;
+      text-shadow: 3px 3px 0 rgba(0,0,0,0.15);
+    }
+    .feature-badge-big .subtitle {
+      font-size: clamp(14px, 1.5vw, 18px);
+      font-weight: 700;
+      color: var(--black);
+      margin-top: 8px;
+    }
+    .feature-badge-big .detail {
+      font-size: clamp(11px, 1.1vw, 13px);
+      color: #555;
+      margin-top: 6px;
+    }
+    .feature-list {
+      color: #fff;
+    }
+    .feature-list h3 {
+      font-family: 'M PLUS Rounded 1c', sans-serif;
+      font-size: clamp(18px, 2.2vw, 26px);
+      font-weight: 900;
+      margin-bottom: 20px;
+      text-shadow: 1px 1px 0 rgba(0,0,0,0.2);
+    }
+    .feature-list ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .feature-list ul li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: clamp(13px, 1.3vw, 15px);
+      line-height: 1.6;
+    }
+    .feature-list ul li::before {
+      content: '✓';
+      flex-shrink: 0;
+      width: 24px;
+      height: 24px;
+      background: var(--yellow);
+      color: var(--green-dark);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 900;
+      margin-top: 2px;
+    }
+
+    /* scratch cards in features */
+    .scratch-preview {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 20px;
+    }
+    .scratch-mini {
+      background: linear-gradient(135deg, #b8d870, #8fc030);
+      border-radius: 10px;
+      padding: 16px 8px;
+      text-align: center;
+      border: 2px solid rgba(255,255,255,0.4);
+      box-shadow: 2px 2px 6px rgba(0,0,0,0.2);
+    }
+    .scratch-mini .icon { font-size: 24px; }
+    .scratch-mini .label {
+      font-size: 10px;
+      color: #fff;
+      font-weight: 700;
+      margin-top: 4px;
+    }
+
+    /* ========== USAGE SCENES ========== */
+    .scenes-section { background: #fff; }
+    .scenes-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+      margin-top: 20px;
+    }
+    .scene-card {
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
+    }
+    .scene-card:hover { transform: translateY(-4px); }
+    .scene-img {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      display: block;
+      background: var(--gray-light);
+    }
+    .scene-img-placeholder {
+      width: 100%;
+      aspect-ratio: 4/3;
+      background: linear-gradient(135deg, #e0e0e0, #c8c8c8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 40px;
+    }
+    .scene-body {
+      padding: 16px;
+      background: #fff;
+    }
+    .scene-title {
+      font-size: 15px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .scene-desc {
+      font-size: 13px;
+      color: var(--gray);
+      line-height: 1.7;
+    }
+
+    /* ========== CTA BANNER ========== */
+    .cta-banner {
+      background: var(--green);
+      padding: 30px var(--side-pad);
+      text-align: center;
+    }
+    .cta-banner p {
+      font-family: 'M PLUS Rounded 1c', sans-serif;
+      font-size: clamp(20px, 3vw, 36px);
+      font-weight: 900;
+      color: #fff;
+      text-shadow: 2px 2px 0 rgba(0,0,0,0.2);
+    }
+    .cta-banner p span {
+      color: var(--yellow);
+    }
+
+    /* ========== BENEFITS ========== */
+    .benefits-section {
+      background: var(--cream-light);
+      position: relative;
+      overflow: hidden;
+    }
+    .benefits-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+    .benefits-content h2 {
+      font-family: 'M PLUS Rounded 1c', sans-serif;
+      font-size: clamp(18px, 2.5vw, 30px);
+      font-weight: 900;
+      margin-bottom: 12px;
+    }
+    .benefits-content .sub {
+      color: var(--green);
+      font-weight: 700;
+      font-size: clamp(13px, 1.3vw, 15px);
+      margin-bottom: 20px;
+    }
+    .benefits-content p {
+      font-size: clamp(13px, 1.3vw, 15px);
+      line-height: 1.9;
+      color: #444;
+    }
+    .benefits-visual {
+      position: relative;
+      min-height: 300px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .scratch-big-visual {
+      width: 100%;
+      max-width: 400px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+      padding: 20px;
+      background: #2a7fc8;
+      border-radius: 20px;
+      position: relative;
+    }
+    .scratch-big-card {
+      aspect-ratio: 1;
+      border-radius: 8px;
+      background: linear-gradient(135deg, #f0f5e0, #e0eda0);
+      border: 2px solid rgba(255,255,255,0.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      box-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+    }
+
+    /* ========== FLOW ========== */
+    .flow-section { background: #fff; }
+    .flow-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      position: relative;
+    }
+    .flow-grid::before {
+      content: '';
+      position: absolute;
+      top: 40px;
+      left: 12.5%;
+      right: 12.5%;
+      height: 3px;
+      background: linear-gradient(90deg, var(--green), var(--yellow));
+      z-index: 0;
+    }
+    .flow-step {
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+    .flow-num {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: var(--green);
+      color: #fff;
+      font-family: 'M PLUS Rounded 1c', sans-serif;
+      font-size: 28px;
+      font-weight: 900;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 16px;
+      box-shadow: 0 4px 0 var(--green-dark);
+    }
+    .flow-num.yellow {
+      background: var(--yellow);
+      color: var(--black);
+      box-shadow: 0 4px 0 var(--yellow-dark);
+    }
+    .flow-label {
+      background: var(--green);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 20px;
+      display: inline-block;
+      margin-bottom: 10px;
+    }
+    .flow-label.yellow {
+      background: var(--yellow);
+      color: var(--black);
+    }
+    .flow-title {
+      font-weight: 700;
+      font-size: 15px;
+      margin-bottom: 8px;
+    }
+    .flow-desc {
+      font-size: 12px;
+      color: var(--gray);
+      line-height: 1.7;
+    }
+
+    /* ========== PRICING ========== */
+    .pricing-section {
+      background: var(--cream-light);
+      text-align: center;
+    }
+    .pricing-desc {
+      font-size: clamp(14px, 1.4vw, 16px);
+      color: #555;
+      margin-bottom: 32px;
+      line-height: 1.8;
+    }
+    .btn-pricing {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--green);
+      color: #fff;
+      font-size: clamp(14px, 1.5vw, 17px);
+      font-weight: 700;
+      padding: 18px 40px;
+      border-radius: 40px;
+      text-decoration: none;
+      box-shadow: 0 5px 0 var(--green-dark);
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+    .btn-pricing:hover {
+      transform: translateY(3px);
+      box-shadow: 0 2px 0 var(--green-dark);
+    }
+
+    /* ========== FAQ ========== */
+    .faq-section {
+      background: #f7fbe8;
+    }
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .faq-item {
+      background: #fff;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    }
+    .faq-q {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 18px 20px;
+      cursor: pointer;
+      user-select: none;
+      transition: background 0.2s;
+    }
+    .faq-q:hover { background: var(--cream-light); }
+    .faq-q-icon {
+      flex-shrink: 0;
+      width: 28px;
+      height: 28px;
+      background: var(--green);
+      color: #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      font-size: 14px;
+    }
+    .faq-q-text {
+      flex: 1;
+      font-weight: 700;
+      font-size: clamp(13px, 1.3vw, 15px);
+      line-height: 1.5;
+    }
+    .faq-toggle {
+      flex-shrink: 0;
+      font-size: 20px;
+      color: var(--green);
+      transition: transform 0.3s;
+      font-weight: 900;
+    }
+    .faq-item.open .faq-toggle { transform: rotate(45deg); }
+    .faq-a {
+      display: none;
+      padding: 0 20px 18px 60px;
+    }
+    .faq-item.open .faq-a { display: block; }
+    .faq-a-icon {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--green);
+      font-weight: 700;
+      font-size: 13px;
+      margin-bottom: 8px;
+    }
+    .faq-a-text {
+      font-size: clamp(12px, 1.2vw, 14px);
+      color: #555;
+      line-height: 1.8;
+    }
+    .faq-cta {
+      text-align: center;
+      margin-top: 32px;
+    }
+
+    /* ========== FOOTER ========== */
+    footer {
+      background: #1a1a1a;
+      color: #ccc;
+      padding: 50px var(--side-pad) 30px;
+    }
+    .footer-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      padding-bottom: 30px;
+      border-bottom: 1px solid #333;
+    }
+    .footer-left .logo {
+      font-family: 'M PLUS Rounded 1c', sans-serif;
+      font-size: 20px;
+      font-weight: 900;
+      color: var(--green);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .footer-left p {
+      font-size: 13px;
+      line-height: 1.8;
+      color: #aaa;
+    }
+    .footer-left .tel {
+      font-size: 20px;
+      font-weight: 700;
+      color: #fff;
+      margin: 12px 0 6px;
+    }
+    .footer-left .tel-note {
+      font-size: 11px;
+      color: #888;
+    }
+    .btn-footer-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--green);
+      color: #fff;
+      padding: 12px 24px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 13px;
+      margin-top: 16px;
+      transition: background 0.2s;
+    }
+    .btn-footer-cta:hover { background: var(--green-dark); }
+    .footer-right {
+      display: flex;
+      justify-content: flex-end;
+      align-items: flex-start;
+      gap: 40px;
+    }
+    .footer-nav h4 {
+      color: #fff;
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+    .footer-nav ul { list-style: none; }
+    .footer-nav ul li { margin-bottom: 8px; }
+    .footer-nav ul li a {
+      color: #aaa;
+      text-decoration: none;
+      font-size: 12px;
+      transition: color 0.2s;
+    }
+    .footer-nav ul li a:hover { color: var(--green); }
+    .footer-bottom {
+      max-width: var(--max-w);
+      margin: 20px auto 0;
+      text-align: center;
+      font-size: 11px;
+      color: #666;
+    }
+
+    /* ========== WAVE DIVIDER ========== */
+    .wave-divider {
+      width: 100%;
+      overflow: hidden;
+      line-height: 0;
+    }
+    .wave-divider svg {
+      display: block;
+      width: 100%;
+    }
+
+    /* ========== ZIGZAG EDGE ========== */
+    .zigzag-top {
+      width: 100%;
+      height: 30px;
+      background: inherit;
+      position: relative;
+    }
+
+    /* ========== RESPONSIVE ========== */
+    @media (max-width: 768px) {
+      :root { --side-pad: 20px; }
+
+      /* Header */
+      nav { display: none; }
+      .mobile-menu-btn {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 4px;
+      }
+      .mobile-menu-btn span {
+        display: block;
+        width: 24px;
+        height: 2px;
+        background: var(--black);
+        border-radius: 2px;
+      }
+
+      /* Hero */
+      .hero-inner {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+      .hero { padding-bottom: 80px; }
+
+      /* Features */
+      .features-inner {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+
+      /* Scenes */
+      .scenes-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      /* Benefits */
+      .benefits-inner {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+      .benefits-visual { order: -1; }
+
+      /* Flow */
+      .flow-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+      }
+      .flow-grid::before { display: none; }
+
+      /* Footer */
+      .footer-inner {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+      .footer-right {
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        gap: 24px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .flow-grid { grid-template-columns: 1fr; }
+      section { padding: 50px var(--side-pad); }
+    }
+
+    /* Mobile nav overlay */
+    .mobile-nav-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(255,255,255,0.98);
+      z-index: 200;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 24px;
+    }
+    .mobile-nav-overlay.open { display: flex; }
+    .mobile-nav-overlay a {
+      text-decoration: none;
+      color: var(--black);
+      font-size: 18px;
+      font-weight: 700;
+    }
+    .mobile-nav-close {
+      position: absolute;
+      top: 20px; right: 20px;
+      background: none;
+      border: none;
+      font-size: 28px;
+      cursor: pointer;
+      color: var(--gray);
+    }
+
+    @media (min-width: 769px) {
+      .mobile-menu-btn { display: none; }
+    }
+
+    /* Animation */
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    .float-anim { animation: float 3s ease-in-out infinite; }
+  </style>
+</head>
+<body>
+
+<!-- ====== MOBILE NAV ====== -->
+<div class="mobile-nav-overlay" id="mobileNav">
+  <button class="mobile-nav-close" onclick="closeMobileNav()">✕</button>
+  <a href="#features" onclick="closeMobileNav()">スクラッチの特徴</a>
+  <a href="#scenes" onclick="closeMobileNav()">活用シーン</a>
+  <a href="#flow" onclick="closeMobileNav()">ご依頼の流れ</a>
+  <a href="#pricing" onclick="closeMobileNav()">料金例</a>
+  <a href="#faq" onclick="closeMobileNav()">よくある質問</a>
+  <a href="#contact" onclick="closeMobileNav()" style="background:var(--green);color:#fff;padding:14px 32px;border-radius:30px;">お問い合わせ</a>
+</div>
+
+<!-- ====== HEADER ====== -->
+<header>
+  <div class="header-inner">
+    <div class="header-logo">🎰 ハッピー白スクラッチ</div>
+    <nav>
+      <a href="#features">スクラッチの特徴</a>
+      <a href="#scenes">活用シーン</a>
+      <a href="#flow">ご依頼の流れ</a>
+      <a href="#pricing">料金例</a>
+      <a href="#faq">よくある質問</a>
+      <a href="#contact" class="btn-cta-header">お問い合わせ</a>
+    </nav>
+    <button class="mobile-menu-btn" onclick="openMobileNav()" aria-label="メニューを開く">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- ====== HERO ====== -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-text">
+      <span class="hero-label">ハッピー白スクラッチ</span>
+      <h1 class="hero-title">
+        削りカスが出ないから<br>
+        飲食店や病院でも使える<br>
+        お子様や<em>ペットがいても</em><br>
+        安心！
+      </h1>
+      <p class="hero-desc">
+        独自技術で削りカスゼロを実現。<br>
+        どんな場所でも安心してお使いいただけるスクラッチカードです。
+      </p>
+      <a href="#contact" class="btn-primary">
+        まずはお問い合わせ <span class="arrow">→</span>
+      </a>
+    </div>
+    <div class="hero-image">
+      <div class="scratch-container">
+        <div class="under-image">削りかすが出ない<br>白スクラッチ！</div>
+        <svg class="scratch-svg" viewBox="0 0 450 450">
+          <defs>
+            <linearGradient id="silverGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%"   stop-color="#e8e8e8" />
+              <stop offset="40%"  stop-color="#c0c0c0" />
+              <stop offset="60%"  stop-color="#d8d8d8" />
+              <stop offset="100%" stop-color="#a8a8a8" />
+            </linearGradient>
+            <mask id="scratch-mask">
+              <rect width="100%" height="100%" fill="white" />
+              <path id="maskPath"
+                d="M26.2,124.5c39.6-30.4,77.5-73.7,118.5-94.3C99,51.4,62.8,121,22.6,170.8C88,105.8,169.4,95.7,228.9,15
+                C161.2,111.1,89.6,195.2,15,266.2C123.2,189,245.7,129.1,343.6,20.4C239.4,73.1,140.2,285.2,30,350.5
+                c110.2-71.3,233.1-112.1,329.2-249.1c-78.9,91.9-157.8,183.8-236.6,275.8c88.9-71.3,177.1-146.8,264.5-226.3
+                C316.8,242,238.7,305.5,165.2,384.6c61.5-52.9,122.4-109.3,182.4-169c-35.3,79.7-82.4,135.2-123.8,200.5
+                c48.6-44.4,97.9-85.7,147.7-123.7c-28.7,62.1-69.8,97.3-104.9,142.6c54.9-53.9,111.1-102,168.4-144.2
+                c-18.6,40.9-38.9,78.5-60.7,112.1"
+                fill="none" stroke="black" stroke-width="100"
+                stroke-linecap="butt" stroke-linejoin="miter" />
+            </mask>
+          </defs>
+          <!-- 銀色カバー（マスクで削れていく） -->
+          <rect width="100%" height="100%" fill="url(#silverGrad)" mask="url(#scratch-mask)" />
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== FEATURES (Wチャンス) ====== -->
+<section class="features-section" id="features">
+  <div class="features-inner">
+    <div class="feature-list">
+      <h3>台スクラッチの特徴</h3>
+      <ul>
+        <li>削りカスが出ないから清潔で安心</li>
+        <li>飲食店・病院・クリニックでも使える</li>
+        <li>お子様やペットがいても大丈夫</li>
+        <li>両面印刷</li>
+      </ul>
+      <div class="scratch-preview" style="margin-top:24px;">
+        <div class="scratch-mini"><div class="icon">🍽️</div><div class="label">飲食店</div></div>
+        <div class="scratch-mini"><div class="icon">🏥</div><div class="label">病院</div></div>
+        <div class="scratch-mini"><div class="icon">🐾</div><div class="label">ペット可</div></div>
+      </div>
+    </div>
+    <div>
+      <div class="feature-badge-big">
+        <div class="w-chance">Wチャンス</div>
+        <div class="subtitle">10円から楽しくできてなの！</div>
+        <div class="detail">スクラッチを削ってさらにチャンス抽選も！</div>
+        <div style="margin-top:16px;display:grid;grid-template-columns:repeat(3,1fr);gap:8px;">
+          <div style="background:var(--green);color:#fff;border-radius:8px;padding:10px 4px;font-size:11px;font-weight:700;text-align:center;">🎰<br>スクラッチ<br>くじ</div>
+          <div style="background:var(--green-dark);color:#fff;border-radius:8px;padding:10px 4px;font-size:11px;font-weight:700;text-align:center;display:flex;align-items:center;justify-content:center;">→</div>
+          <div style="background:var(--green);color:#fff;border-radius:8px;padding:10px 4px;font-size:11px;font-weight:700;text-align:center;">🎁<br>追加<br>抽選</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== SCENES ====== -->
+<section class="scenes-section" id="scenes">
+  <div class="section-inner">
+    <h2 class="section-title">活用シーン</h2>
+    <div class="scenes-grid">
+      <div class="scene-card">
+        <div class="scene-img-placeholder">🍜</div>
+        <div class="scene-body">
+          <div class="scene-title">飲食店</div>
+          <p class="scene-desc">レストランやカフェ、居酒屋などの飲食店で、お食事中のお客様にも安心してお渡しいただけます。削りカスが出ないので衛生面も万全です。</p>
+        </div>
+      </div>
+      <div class="scene-card">
+        <div class="scene-img-placeholder">🏥</div>
+        <div class="scene-body">
+          <div class="scene-title">病院・クリニック</div>
+          <p class="scene-desc">病院やクリニック、歯科医院など衛生管理が必要な場所でも安心してご利用いただけます。待合室でのアトラクションとしても最適です。</p>
+        </div>
+      </div>
+      <div class="scene-card">
+        <div class="scene-img-placeholder">🎪</div>
+        <div class="scene-body">
+          <div class="scene-title">イベント・催事場</div>
+          <p class="scene-desc">各種イベントや催事、展示会など多くの方が集まる場所でも使用可能。子供から大人まで楽しめる集客アイテムとして大活躍します。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== CTA BANNER ====== -->
+<div class="cta-banner">
+  <p>売上へのファンづくりに<span>ダイレクト</span>に効く！</p>
+</div>
+
+<!-- ====== BENEFITS ====== -->
+<section class="benefits-section" id="benefits">
+  <div class="benefits-inner">
+    <div class="benefits-content">
+      <h2>最安で内製できる特殊用紙です！</h2>
+      <p class="sub">▶ 業界最安値クラスの料金設定</p>
+      <p>
+        台スクラッチカードは、独自の特殊コーティング技術により削りカスが出ない革新的な素材を採用しています。<br><br>
+        お客様のニーズに合わせた完全オリジナルデザインで制作。ロットや枚数のご要望にも柔軟に対応いたします。少量から大量発注まで、お気軽にご相談ください。
+      </p>
+    </div>
+    <div class="benefits-visual">
+      <div class="scratch-big-visual">
+        <div class="scratch-big-card">🍋</div>
+        <div class="scratch-big-card">🍋</div>
+        <div class="scratch-big-card">⭐</div>
+        <div class="scratch-big-card">🍋</div>
+        <div class="scratch-big-card">🎯</div>
+        <div class="scratch-big-card">🍀</div>
+        <div class="scratch-big-card">💎</div>
+        <div class="scratch-big-card">🍋</div>
+        <div class="scratch-big-card">⭐</div>
+        <div class="scratch-big-card">🎁</div>
+        <div class="scratch-big-card">🍀</div>
+        <div class="scratch-big-card">💎</div>
+        <div class="scratch-big-card">🏆</div>
+        <div class="scratch-big-card">🍋</div>
+        <div class="scratch-big-card">⭐</div>
+        <div class="scratch-big-card">🎯</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== FLOW ====== -->
+<section class="flow-section" id="flow">
+  <div class="section-inner">
+    <h2 class="section-title">ご依頼の流れ</h2>
+    <div class="flow-grid">
+      <div class="flow-step">
+        <div class="flow-num">1</div>
+        <span class="flow-label">お問い合わせ</span>
+        <div class="flow-title">まずはご相談</div>
+        <p class="flow-desc">フォームまたはお電話にてお気軽にご連絡ください。ご要望をヒアリングいたします。</p>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num yellow">2</div>
+        <span class="flow-label yellow">見積もり</span>
+        <div class="flow-title">お見積もり</div>
+        <p class="flow-desc">枚数・デザイン・仕様に合わせて最適なお見積もりをご提出します。</p>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num">3</div>
+        <span class="flow-label">データ入稿</span>
+        <div class="flow-title">デザイン制作・入稿</div>
+        <p class="flow-desc">オリジナルデザインを制作。ご支給データでの入稿にも対応しています。</p>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num yellow">4</div>
+        <span class="flow-label yellow">納品</span>
+        <div class="flow-title">製造・納品</div>
+        <p class="flow-desc">品質チェックを経て、ご指定の場所へお届けします。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== PRICING ====== -->
+<section class="pricing-section" id="pricing">
+  <div class="section-inner" style="text-align:center;">
+    <h2 class="section-title">料金例</h2>
+    <p class="pricing-desc">
+      カードサイズから枚数まで、<br>
+      お客様のご要望に合わせてお見積もりいたします！
+    </p>
+    <a href="#contact" class="btn-pricing">料金を確認する →</a>
+  </div>
+</section>
+
+<!-- ====== FAQ ====== -->
+<section class="faq-section" id="faq">
+  <div class="section-inner">
+    <h2 class="section-title">よくある質問</h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <div class="faq-q-icon">Q</div>
+          <div class="faq-q-text">最低注文枚数はありますか？</div>
+          <div class="faq-toggle">+</div>
+        </div>
+        <div class="faq-a">
+          <div class="faq-a-icon">A</div>
+          <p class="faq-a-text">最低注文数は100枚からとなっております。少量からでもオリジナルのスクラッチカードをご注文いただけます。枚数が多いほど単価がお安くなりますので、まずはお気軽にご相談ください。</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <div class="faq-q-icon">Q</div>
+          <div class="faq-q-text">納期はどのくらいかかりますか？</div>
+          <div class="faq-toggle">+</div>
+        </div>
+        <div class="faq-a">
+          <div class="faq-a-icon">A</div>
+          <p class="faq-a-text">通常、ご入稿データ確定後から約7〜14営業日での納品となります。お急ぎの場合はご相談ください。スケジュールに合わせて対応いたします。</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <div class="faq-q-icon">Q</div>
+          <div class="faq-q-text">デザインはこちらで用意しなければなりませんか？</div>
+          <div class="faq-toggle">+</div>
+        </div>
+        <div class="faq-a">
+          <div class="faq-a-icon">A</div>
+          <p class="faq-a-text">デザインデータをご支給いただく形が基本となりますが、デザイン制作のサポートも行っております。ご要望の際はお問い合わせ時にその旨をお伝えください。別途デザイン費用が発生する場合があります。</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <div class="faq-q-icon">Q</div>
+          <div class="faq-q-text">当選確率や当選番号の設定は自由にできますか？</div>
+          <div class="faq-toggle">+</div>
+        </div>
+        <div class="faq-a">
+          <div class="faq-a-icon">A</div>
+          <p class="faq-a-text">はい、当選確率や賞品内容はお客様のご要望に合わせて自由に設定いただけます。法律の範囲内であれば、複数の当選パターンや段階的な当選確率なども設定可能です。</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <div class="faq-q-icon">Q</div>
+          <div class="faq-q-text">なぜ削りカスが出ないのですか？</div>
+          <div class="faq-toggle">+</div>
+        </div>
+        <div class="faq-a">
+          <div class="faq-a-icon">A</div>
+          <p class="faq-a-text">独自開発の特殊コーティング技術を使用しており、スクラッチ部分が削れる際に粉状にならず、フィルムのように剥がれる仕組みになっています。これにより、飲食店や医療施設でも衛生的にご利用いただけます。</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <div class="faq-q-icon">Q</div>
+          <div class="faq-q-text">支払い方法はどのようなものがありますか？</div>
+          <div class="faq-toggle">+</div>
+        </div>
+        <div class="faq-a">
+          <div class="faq-a-icon">A</div>
+          <p class="faq-a-text">銀行振込、クレジットカード払いに対応しております。法人様の場合は掛け払い（請求書払い）にも対応しておりますので、ご相談ください。</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-cta">
+      <a href="#contact" class="btn-primary">まずはお問い合わせ <span class="arrow">→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ====== FOOTER ====== -->
+<footer id="contact">
+  <div class="footer-inner">
+    <div class="footer-left">
+      <div class="logo">HCP ハッピー白スクラッチ</div>
+      <p>飲食店・医療機関・各種イベントで使える<br>削りカスが出ないスクラッチカードの専門店</p>
+      <div class="tel">📞 0569-29-2515</div>
+      <div class="tel-note">平日 9:00〜18:00（土日祝除く）</div>
+      <a href="/cdn-cgi/l/email-protection#c7aea9a1a887afa6b7b7beb4a4b5e9adb7" class="btn-footer-cta">📩 お問い合わせフォーム</a>
+    </div>
+    <div class="footer-right">
+      <div class="footer-nav">
+        <h4>サービス</h4>
+        <ul>
+          <li><a href="#features">スクラッチの特徴</a></li>
+          <li><a href="#scenes">活用シーン</a></li>
+          <li><a href="#flow">ご依頼の流れ</a></li>
+          <li><a href="#pricing">料金例</a></li>
+        </ul>
+      </div>
+      <div class="footer-nav">
+        <h4>サポート</h4>
+        <ul>
+          <li><a href="#faq">よくある質問</a></li>
+          <li><a href="#contact">お問い合わせ</a></li>
+          <li><a href="#">プライバシーポリシー</a></li>
+          <li><a href="#">特定商取引法</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2024 HCP ハッピー白スクラッチ. All rights reserved.</p>
+  </div>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  function toggleFaq(el) {
+    const item = el.closest('.faq-item');
+    const isOpen = item.classList.contains('open');
+    // Close all
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    // Toggle clicked
+    if (!isOpen) item.classList.add('open');
+  }
+
+  function openMobileNav() {
+    document.getElementById('mobileNav').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeMobileNav() {
+    document.getElementById('mobileNav').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  // スクラッチアニメーション（requestAnimationFrame方式で確実に動作）
+  window.addEventListener('DOMContentLoaded', () => {
+    const path = document.getElementById('maskPath');
+    if (!path) return;
+
+    const speed = 800; // px/秒
+    const length = path.getTotalLength();
+
+    // 初期状態：全部見えている（dashoffset = length → ストロークが描かれていない）
+    path.setAttribute('stroke-dasharray', length);
+    path.setAttribute('stroke-dashoffset', length);
+
+    let startTime = null;
+    const delay = 2000; // 2秒後に開始
+
+    function animate(timestamp) {
+      if (!startTime) startTime = timestamp;
+      const elapsed = timestamp - startTime - delay;
+      if (elapsed < 0) {
+        requestAnimationFrame(animate);
+        return;
+      }
+      // 経過時間に応じてdashoffsetを減らす（0になると全部描かれる）
+      const progress = Math.min(elapsed / 1000 * speed, length);
+      path.setAttribute('stroke-dashoffset', length - progress);
+
+      if (progress < length) {
+        requestAnimationFrame(animate);
+      }
+    }
+    requestAnimationFrame(animate);
+  });
+
+  // Scroll reveal (simple)
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.style.opacity = '1';
+        e.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.scene-card, .flow-step, .faq-item').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform =

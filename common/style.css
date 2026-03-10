@@ -220,6 +220,7 @@ nav a:hover {
 	margin-top: 50px;
 	letter-spacing: 0.1em;
 	z-index: 1000;
+	position: relative;
 }
 
 /* 1. アニメーションの「動きの台本」を作る */
@@ -460,7 +461,7 @@ section {
 	background: var(--green);
 	padding: 60px var(--side-pad);
 	position: relative;
-	z-index: 100;
+	z-index: 0;
 }
 
 /* 上部のギザギザ境界線 */
@@ -507,11 +508,14 @@ section {
 	align-items: center;
 }
 
+
 .feature-images {
-    display: flex;
-    gap: 10px;
-    align-items: end;
-}
+        max-width: 800px; /* ここでお好みの幅に調整してください */
+        margin: 0 auto;   /* 中央に配置 */
+        display: flex;    /* 横並びを維持 */
+        justify-content: center; /* 中身を中央寄せ */
+        align-items: center;
+    }
 
 /* 画像がはみ出さないように */
 .feature-images img {
@@ -596,6 +600,9 @@ section {
     height: auto;
     display: block;
 	margin-top: 20px;
+	/* ↓これを追加：ブロック要素を中央に寄せる魔法のコード */
+	margin-left: auto;
+    margin-right: auto;
 }
 
 
@@ -637,10 +644,10 @@ section {
 	display: flex;
     gap: 50px;
     align-items: center;
-	background-color: #fff;
+	background-color: var(--white);
 	border-radius: 2000px;
 	padding: 60px 100px 90px;
-	margin-top: 50px;
+	margin: 50px auto 0;
 	position: relative;
 }
 

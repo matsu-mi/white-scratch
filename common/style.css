@@ -1811,14 +1811,14 @@ footer > p {
 		min-height: auto;
 		display: flex !important;
 		flex-direction: row !important;
-		gap: 20px;
-		align-items: center !important;
+		gap: 0;
+		align-items: flex-end !important;
 		overflow: visible;
 		position: static !important;
 		justify-content: center !important;
 		width: 100% !important;
 		margin: 0 auto !important;
-		padding: 0 !important;
+		padding: 20px 0 !important;
 		transform: none !important;
 		opacity: 1 !important;
 		visibility: visible !important;
@@ -1826,12 +1826,9 @@ footer > p {
 
 	.scratch-item {
 		position: relative !important;
-		/* absoluteを解除 */
-		width: 100px !important;
-		/* スマホ画面に合わせたサイズ */
+		width: 140px !important;
 		animation: none;
-		/* 酔い防止で止めるか、動きを小さくする */
-		margin: 0 -20px !important;
+		margin: 0 -18px !important;
 		top: auto !important;
 		left: auto !important;
 		right: auto !important;
@@ -1841,10 +1838,25 @@ footer > p {
 		transform: none !important;
 	}
 
+	.scratch-item:nth-child(1) {
+		z-index: 1;
+		transform: rotate(-6deg) !important;
+	}
+
+	.scratch-item:nth-child(2) {
+		z-index: 3;
+		transform: translateY(-15px) !important;
+	}
+
+	.scratch-item:nth-child(3) {
+		z-index: 2;
+		transform: rotate(6deg) !important;
+	}
+
 	.feature-text {
 		flex-direction: column !important;
 		gap: 30px;
-		padding: 40px 20px !important;
+		padding: 5px 20px 40px !important;
 		border-radius: 30px;
 		height: auto !important;
 		display: flex !important;
@@ -1852,6 +1864,18 @@ footer > p {
 		width: 90% !important;
 		margin-left: auto !important;
 		margin-right: auto !important;
+		align-items: center !important;
+	}
+
+	.feature-text > div:first-child {
+		width: 100% !important;
+		text-align: center !important;
+		margin-bottom: 0 !important;
+		position: static !important;
+	}
+
+	.feature-text > h3 {
+		text-align: center !important;
 	}
 
 	.scratch-preview {
@@ -1893,34 +1917,7 @@ footer > p {
 
 /* 1. 白い楕円を「縦並び」にする */
 
-/* 2. テキスト部分：幅を広げて中央に */
-
-	.feature-text > div:first-child {
-		width: 90vw !important;
-		text-align: left;
-		/* リストは見やすいように左寄せ（中央寄せなら center） */
-		margin-bottom: 30px !important;
-		/* 画像との隙間 */
-		position: static !important;
-	}
-
-	.feature-text > h3 {
-		text-align: center !important;
-	}
-
 /* 重なり順（右側を上に） */
-
-	.scratch-item:nth-child(1) {
-		z-index: 1;
-	}
-
-	.scratch-item:nth-child(2) {
-		z-index: 2;
-	}
-
-	.scratch-item:nth-child(3) {
-		z-index: 3;
-	}
 
 	.scratch-item img {
 		width: 100% !important;

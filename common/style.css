@@ -1519,9 +1519,14 @@ footer > p {
 		padding-bottom: 20px;
 	}
 
+	.faq-section {
+		padding-left: 10px;
+		padding-right: 10px;
+	}
+
 	.faq-list {
-		width: calc(100% - 20px);
-		margin: 0 10px;
+		width: 100%;
+		margin: 0;
 		gap: 25px;
 	}
 
@@ -1640,6 +1645,7 @@ footer > p {
 
 	.hero-desc {
 		font-size: 14px;
+		text-align: center;
 	}
 
 	.scratch-container {
@@ -1757,10 +1763,11 @@ footer > p {
 /* 【下段】After画像：全幅で表示 */
 
 	.feature-images-after {
-		width: 85% !important;
+		width: 100% !important;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
+		text-align: center;
 	}
 
 	.feature-images-after img {
@@ -1783,10 +1790,15 @@ footer > p {
 
 /* Benefits */
 
+	.benefits-section {
+		padding-left: 10px;
+		padding-right: 10px;
+	}
+
 	.benefits-inner {
 		grid-template-columns: 1fr;
 		gap: 30px;
-		padding: 0 10px;
+		padding: 0;
 	}
 
 	.benefits-visual {

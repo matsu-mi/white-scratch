@@ -650,7 +650,7 @@ section {
 }
 
 .feature-text {
-	width: clamp(400px,50vw,1200px);
+	width: clamp(300px,50vw,1200px);
 	color: var(--black);
 	display: flex;
 	gap: 50px;

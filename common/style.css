@@ -1653,26 +1653,25 @@ footer > p {
 		overflow: hidden;
 	}
 
-/* 全体を横並びに維持（before左・after右） */
+/* 全体を縦積み（before上・矢印・after下） */
 
 	.feature-images {
 		display: flex !important;
-		flex-direction: row !important;
+		flex-direction: column !important;
 		align-items: center !important;
-		gap: 0 !important;
+		gap: 20px !important;
 		width: 100%;
 		overflow: hidden;
 	}
 
-/* 【左側】吹き出し＋beforeカード画像 */
+/* 【上段】吹き出し＋beforeカード画像：横並びを維持 */
 
 	.feature-images-before {
 		display: flex !important;
 		flex-direction: row !important;
 		align-items: flex-end !important;
 		justify-content: flex-start !important;
-		width: 55% !important;
-		flex-shrink: 0;
+		width: 100% !important;
 		position: relative;
 		gap: 0;
 	}
@@ -1680,39 +1679,45 @@ footer > p {
 /* カード側の幅（左） */
 
 	.feature-images-balloon {
-		width: 60% !important;
+		width: 55% !important;
 		flex: none !important;
 	}
 
-/* 丸い画像側の幅（右）と重なり調整 */
+/* 丸い画像側：右側が少し切れるくらいにはみ出す */
 
 	.feature-images-before > div:last-child {
-		width: 60% !important;
+		width: 55% !important;
 		flex: none !important;
 		margin-left: -15% !important;
 		z-index: 2;
+		overflow: hidden;
 	}
 
-/* 矢印を「下向きの▼」に変更する（擬似要素や文字で調整） */
+/* 矢印は縦積みなので回転して表示 */
 
 	.feature-images-arrow {
-		display: none !important;
+		display: flex !important;
 	}
 
-/* 【右側】After画像：右端が少し切れる配置 */
+	.feature-images-arrow p {
+		transform: rotate(90deg);
+		font-size: 30px;
+		color: #fff;
+		margin: 0;
+	}
+
+/* 【下段】After画像：全幅で表示 */
 
 	.feature-images-after {
-		flex: 1 !important;
-		width: auto !important;
+		width: 85% !important;
 		display: flex;
 		flex-direction: column;
-		align-items: flex-start;
-		overflow: visible;
+		align-items: center;
 	}
 
 	.feature-images-after img {
-		width: 140% !important;
-		margin-left: -10% !important;
+		width: 90% !important;
+		margin-left: 0 !important;
 	}
 
 /* 画像の基本設定 */

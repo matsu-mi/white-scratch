@@ -390,14 +390,6 @@ nav a:hover {
 	box-shadow: 3px 3px 0 var(--yellow-dark);
 }
 
-/* FVのタイトル全体の調整 */
-
-/* 2. 中段の文字を少し小さく、細くして強弱をつける */
-
-/* 3. ペットがいても安心！ の強調ライン */
-
-/* レスポンシブ：1000px以下の調整 */
-
 /* ========== SECTION COMMON ========== */
 
 section {
@@ -1519,6 +1511,9 @@ footer > p {
 	:root {
 		--side-pad: 20px;
 	}
+	.section-inner {
+		margin: 0 auto 20px;
+	}
 
 /* Header */
 
@@ -1940,7 +1935,7 @@ footer > p {
 	}
 
 	section {
-		padding: 50px var(--side-pad);
+		padding: 10px var(--side-pad);
 	}
 
 	footer {

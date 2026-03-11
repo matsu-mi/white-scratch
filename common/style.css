@@ -1692,6 +1692,9 @@ footer > p {
 	}
 
 	.balloon {
+		min-width: 0;
+		width: 100%;
+		box-sizing: border-box;
 		padding: clamp(16px,2vw,20px) clamp(2px,0.5vw,30px);
 	}
 
@@ -1842,12 +1845,25 @@ footer > p {
 		flex-direction: column !important;
 		gap: 30px;
 		padding: 40px 20px !important;
-		/* スマホでは普通の余白に戻す */
-		border-radius: 40px;
-		/* 楕円から角丸へ */
+		border-radius: 30px;
 		height: auto !important;
 		display: flex !important;
 		position: relative !important;
+		width: 90% !important;
+		margin-left: auto !important;
+		margin-right: auto !important;
+	}
+
+	.scratch-preview {
+		width: 100%;
+	}
+
+	.scratch-mini {
+		padding: 20px 10px;
+	}
+
+	.scratch-mini .icon {
+		font-size: 32px;
 	}
 
 /* Hero全体の調整 */

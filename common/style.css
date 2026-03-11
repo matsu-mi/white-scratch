@@ -56,8 +56,21 @@ body {
 	margin-bottom: 10px;
 }
 
+h3,
+.header-logo,
+.hero-title,
+.section-title,
+.feature-badge-big .w-chance,
+.cta-banner p,
+.flow-num,
+.footer-left .logo {
+	font-family: var(--font-base);
+	font-size: clamp(30px, 2.2vw, 34px);
+	font-weight: 700;
+}
+
 h3 span {
-	font-size: clamp(14px, 2.0vw, 20px);
+	font-size: clamp(16px, 2.0vw, 20px);
 	margin-bottom: 20px;
 	font-weight: 500;
 	color: var(--green);
@@ -140,19 +153,6 @@ h3 span {
 }
 
 /* ========== HEADER ========== */
-
-h3,
-.header-logo,
-.hero-title,
-.section-title,
-.feature-badge-big .w-chance,
-.cta-banner p,
-.flow-num,
-.footer-left .logo {
-	font-family: var(--font-base);
-	font-size: clamp(18px, 2.2vw, 34px);
-	font-weight: 700;
-}
 
 header {
 	/* background: #fff; */
@@ -1647,6 +1647,8 @@ footer > p {
 	.features-inner {
 		grid-template-columns: 1fr;
 		gap: 30px;
+		margin: 0;
+		padding: 30px 0;
 	}
 
 	.features-section {

@@ -1842,6 +1842,7 @@ footer > p {
 
 	.footer-wrapper {
 		flex-direction: column;
+		justify-content: flex-start !important;
 		width: 100% !important;
 		gap: 30px;
 		margin: 0 0 20px 0 !important;
@@ -1981,6 +1982,8 @@ footer > p {
 
 	footer {
 		width: 100vw;
+		max-width: 100%;
+		box-sizing: border-box;
 		padding: 100px 10px 50px;
 	}
 

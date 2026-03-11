@@ -1520,13 +1520,13 @@ footer > p {
 	}
 
 	.faq-section {
-		padding-left: 10px;
-		padding-right: 10px;
+		padding-left: 10px !important;
+		padding-right: 10px !important;
 	}
 
 	.faq-list {
-		width: 100%;
-		margin: 0;
+		width: 100% !important;
+		margin: 0 !important;
 		gap: 25px;
 	}
 
@@ -1791,8 +1791,8 @@ footer > p {
 /* Benefits */
 
 	.benefits-section {
-		padding-left: 10px;
-		padding-right: 10px;
+		padding-left: 10px !important;
+		padding-right: 10px !important;
 	}
 
 	.benefits-inner {

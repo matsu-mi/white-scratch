@@ -946,14 +946,18 @@ section {
 	margin-right: 20px;
 }
 
-/* 各ステップの右側に三角を出す（PC用） */
+/* 各ステップの右側に三角を出す */
 
 .flow-step::after {
 	content: '';
 	position: absolute;
 	top: 50%;
+	/* 上から50%の位置へ */
 	transform: translateY(-50%);
+	/* 自身の高さ半分だけ上にずらして中央へ */
 	right: -30px;
+	/* ステップの外側（右）へはみ出させる数値 */
+	/* 三角形を作る設定 */
 	width: 0;
 	height: 0;
 	border-style: solid;
@@ -966,19 +970,6 @@ section {
 
 .flow-step:last-child::after {
 	display: none;
-}
-
-/* スマホ用の下矢印（隣接セレクタで各STEP間に表示） */
-
-.flow-step + .flow-step::before {
-	display: none;
-	content: '';
-	width: 0;
-	height: 0;
-	border-style: solid;
-	border-width: 15px 10px 0 10px;
-	border-color: var(--green) transparent transparent transparent;
-	margin: 0 auto;
 }
 
 .flow-num {
@@ -1736,49 +1727,30 @@ footer > p {
 
 	.benefits-visual {
 		order: -1;
-		overflow: hidden;
-		border-radius: 50%;
 	}
 
 /* Flow */
 
 	.flow-items {
 		grid-template-columns: 1fr;
-		gap: 0;
+		gap: 20px;
 	}
 
 	.flow-items::before {
 		display: none;
 	}
 
-	.flow-step {
-		margin-right: 0;
-	}
-
-	.flow-step::after {
-		display: none;
-	}
-
-	.flow-step + .flow-step::before {
-		display: block;
-		margin: 10px auto;
-	}
-
 /* Footer */
 
-	.footer-wrapper {
-		flex-direction: column;
-		width: 90vw;
+	.footer-inner {
+		grid-template-columns: 1fr;
 		gap: 30px;
-		margin-bottom: 20px;
 	}
 
-	.company-info {
-		width: 100%;
-	}
-
-	.company-info > a {
-		font-size: 24px;
+	.footer-right {
+		justify-content: flex-start;
+		flex-wrap: wrap;
+		gap: 24px;
 	}
 
 	.feature-images-sample {
@@ -1899,6 +1871,14 @@ footer > p {
 	footer {
 		width: 100vw;
 		padding: 100px 5vw 50px;
+	}
+
+	.footer-wrapper {
+		margin-bottom: 20px;
+	}
+
+	.company-info {
+		width: 90vw;
 	}
 
 	.footer-logo {

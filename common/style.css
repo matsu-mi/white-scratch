@@ -60,6 +60,10 @@ p {
 	text-align: justify;
 }
 
+.section-point p {
+	text-align: center;
+}
+
 h3,
 .header-logo,
 .hero-title,
@@ -704,42 +708,47 @@ section {
 
 .feature-images-sample {
 	flex: 5;
+	display: flex;
+	flex-direction: row;
+	align-items: flex-end;
+	justify-content: center;
 	position: relative;
-	/* ★ 高さを強制的に0にします */
-	height: 0;
-	/* ★ 中身（画像）は見せる */
+	height: auto;
 	overflow: visible;
 }
 
-/* 共通：pタグを浮かせ、アニメーションをセット */
-
-/* --- ★ 個別配置（bottom基準でマイナス値を使い、下へはみ出させる） --- */
+.scratch-item {
+	position: relative;
+	top: auto;
+	left: auto;
+	width: 180px;
+	margin: 0 -18px;
+	opacity: 0;
+	animation: fadeInUp 0.8s ease-out forwards;
+}
 
 /* 1枚目（一番奥） ★ */
 
 .item-green {
-	top: -220px;
-	left: 10%;
 	z-index: 1;
 	animation-delay: 0;
+	transform: rotate(-6deg);
 }
 
 /* 2枚目（真ん中） ★ */
 
 .item-orange {
-	top: -130px;
-	left: 45%;
-	z-index: 2;
+	z-index: 3;
 	animation-delay: 0.2s;
+	transform: translateY(-20px);
 }
 
 /* 3枚目（一番手前） ★ */
 
 .item-blue {
-	bottom: 30px;
-	left: -5%;
-	z-index: 3;
+	z-index: 2;
 	animation-delay: 0.4s;
+	transform: rotate(6deg);
 }
 
 /* 1. アニメーション本体の定義を追加 */
@@ -1436,18 +1445,6 @@ footer > p {
 	font-weight: 900;
 	color: var(--green-dark);
 	font-size: clamp(14px, 1.5vw, 20px);
-}
-
-.scratch-item {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 220px;
-	/* 画像のサイズ感に合わせて調整 */
-	opacity: 0;
-	/* 最初は透明にしておく */
-	/* animation: fuwafuwa 4s ease-in-out infinite; */
-	animation: fadeInUp 0.8s ease-out forwards;
 }
 
 .scratch-item img {

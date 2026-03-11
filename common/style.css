@@ -1846,6 +1846,7 @@ footer > p {
 		width: 100% !important;
 		gap: 30px;
 		margin: 0 0 20px 0 !important;
+		padding: 0 10px !important;
 	}
 
 	.company-info {

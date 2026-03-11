@@ -1684,6 +1684,10 @@ footer > p {
 		flex: none !important;
 	}
 
+	.balloon {
+		padding: clamp(16px,2vw,20px) clamp(2px,0.5vw,30px);
+	}
+
 /* 丸い画像側：右側が少し切れるくらいにはみ出す */
 
 	.feature-images-before > div:last-child {
@@ -1745,8 +1749,11 @@ footer > p {
 		order: -1;
 	}
 
-/* Flow */
+	.benefits-section .section-point {
+		text-align: center;
+	}
 
+/* Flow */
 	.flow-items {
 		grid-template-columns: 1fr;
 		gap: 30px;
@@ -1829,11 +1836,10 @@ footer > p {
 		gap: 30px;
 		padding: 40px 20px !important;
 		/* スマホでは普通の余白に戻す */
-		border-radius: 20px;
+		border-radius: 40px;
 		/* 楕円から角丸へ */
 		height: auto !important;
 		display: flex !important;
-		align-items: center !important;
 		position: relative !important;
 	}
 
@@ -1867,7 +1873,7 @@ footer > p {
 /* 2. テキスト部分：幅を広げて中央に */
 
 	.feature-text > div:first-child {
-		width: 100% !important;
+		width: 90vw !important;
 		text-align: left;
 		/* リストは見やすいように左寄せ（中央寄せなら center） */
 		margin-bottom: 30px !important;
@@ -1875,9 +1881,9 @@ footer > p {
 		position: static !important;
 	}
 
-/* 3. 画像エリア：バラバラの位置設定を全てリセットして横に並べる */
-
-/* 4. 画像1枚ずつ：マイナスマージンで重ねる */
+	.feature-text > h3 {
+		text-align: center !important;
+	}
 
 /* 重なり順（右側を上に） */
 

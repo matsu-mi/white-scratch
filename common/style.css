@@ -56,6 +56,10 @@ body {
 	margin-bottom: 10px;
 }
 
+p {
+	text-align: justify;
+}
+
 h3,
 .header-logo,
 .hero-title,
@@ -415,6 +419,7 @@ section {
 	text-align: center;
 	margin-bottom: 40px;
 	padding-bottom: 16px;
+	font-size: clamp(28px, 2.2vw, 32px);
 	/* afterの擬似要素使わないから非表示 */
 	/* position: relative; */
 }
@@ -433,7 +438,7 @@ section {
 
 .section-point {
 	text-align: center;
-	font-size: clamp(20px,2.1em,40px);
+	font-size: clamp(22px,2.1em,42px);
 	font-weight: 600;
 	padding-top: 40px;
 	margin-bottom: 50px;
@@ -1508,8 +1513,17 @@ footer > p {
 		display: block;
 	}
 
+	.pricing-section {
+		padding-top: 20px;
+	}
+
+	.flow-section {
+		padding-bottom: 20px;
+	}
+
 	.faq-list {
-		width: calc(100% - 10px);
+		width: calc(100% - 20px);
+		margin: 0 10px;
 		gap: 25px;
 	}
 
@@ -1954,7 +1968,7 @@ footer > p {
 
 	footer {
 		width: 100vw;
-		padding: 100px 5px 50px;
+		padding: 100px 10px 50px;
 	}
 
 	.footer-logo {

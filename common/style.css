@@ -722,8 +722,8 @@ section {
 	position: relative;
 	top: auto;
 	left: auto;
-	width: 120px;
-	margin: 0 -12px;
+	width: 160px;
+	margin: 0 -20px;
 	opacity: 0;
 	animation: fadeInUp 0.8s ease-out forwards;
 }
@@ -733,7 +733,7 @@ section {
 .item-green {
 	z-index: 1;
 	animation-delay: 0;
-	transform: rotate(-6deg);
+	transform: rotate(-8deg) translateY(15px);
 }
 
 /* 2枚目（真ん中） ★ */
@@ -741,7 +741,7 @@ section {
 .item-orange {
 	z-index: 3;
 	animation-delay: 0.2s;
-	transform: translateY(-20px);
+	transform: translateY(-25px);
 }
 
 /* 3枚目（一番手前） ★ */
@@ -749,7 +749,7 @@ section {
 .item-blue {
 	z-index: 2;
 	animation-delay: 0.4s;
-	transform: rotate(6deg);
+	transform: rotate(8deg) translateY(10px);
 }
 
 /* 1. アニメーション本体の定義を追加 */
@@ -1786,6 +1786,7 @@ footer > p {
 	.benefits-inner {
 		grid-template-columns: 1fr;
 		gap: 30px;
+		padding: 0 10px;
 	}
 
 	.benefits-visual {
@@ -1827,7 +1828,7 @@ footer > p {
 
 	.footer-wrapper {
 		flex-direction: column;
-		width: 90vw;
+		width: 100%;
 		gap: 30px;
 		margin-bottom: 20px;
 	}

@@ -1509,7 +1509,7 @@ footer > p {
 	}
 
 	.faq-list {
-		width: calc(100% - 20px);
+		width: calc(100% - 10px);
 		gap: 25px;
 	}
 
@@ -1615,7 +1615,7 @@ footer > p {
 	.hero-title {
 		display: block !important;
 		width: 100% !important;
-		font-size: clamp(18px, 5vw, 28px) !important;
+		font-size: clamp(24px, 8vw, 38px) !important;
 		line-height: 1.5 !important;
 		white-space: normal !important;
 		text-align: center !important;
@@ -1954,7 +1954,7 @@ footer > p {
 
 	footer {
 		width: 100vw;
-		padding: 100px 10px 50px;
+		padding: 100px 5px 50px;
 	}
 
 	.footer-logo {

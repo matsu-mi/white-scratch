@@ -1504,6 +1504,10 @@ footer > p {
 
 @media (max-width: 768px) {
 
+	.text-sub {
+		display: inline;
+	}
+
 	:root {
 		--side-pad: 20px;
 	}

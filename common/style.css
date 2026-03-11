@@ -560,7 +560,7 @@ section {
 	position: relative;
 	display: inline-block;
 	/* 文字幅に合わせる */
-	padding: clamp(16px,2vw,20px) clamp(2px,0.5vw,30px);
+	padding: clamp(16px,2vw,20px) clamp(2px,1vw,30px);
 	/* 上下 左右の余白 */
 	background: #fff;
 	border-radius: 50px;

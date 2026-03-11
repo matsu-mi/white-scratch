@@ -1553,6 +1553,13 @@ footer > p {
 		border-radius: 2px;
 	}
 
+	.section-point {
+		font-size: clamp(16px,1.5em,40px);
+		padding-top: 30px;
+		margin-bottom: 30px;
+	}
+
+
 /* Hero */
 
 	.hero {

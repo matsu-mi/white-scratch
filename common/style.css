@@ -1825,7 +1825,7 @@ footer > p {
 	}
 
 	.feature-text {
-		width: 90%;
+		width: 90vw;
 		flex-direction: column !important;
 		gap: 30px;
 		padding: 40px 20px !important;

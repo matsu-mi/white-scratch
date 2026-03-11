@@ -560,7 +560,7 @@ section {
 	position: relative;
 	display: inline-block;
 	/* 文字幅に合わせる */
-	padding: clamp(16px,2vw,20px) clamp(4px,1vw,30px);
+	padding: clamp(16px,2vw,20px) clamp(2px,0.5vw,30px);
 	/* 上下 左右の余白 */
 	background: #fff;
 	border-radius: 50px;
@@ -574,7 +574,6 @@ section {
 }
 
 /* 下の三角部分 */
-
 .balloon::after {
 	content: "";
 	position: absolute;
@@ -1826,11 +1825,12 @@ footer > p {
 	}
 
 	.feature-text {
+		width: 90%;
 		flex-direction: column !important;
 		gap: 30px;
 		padding: 40px 20px !important;
 		/* スマホでは普通の余白に戻す */
-		border-radius: 20px;
+		border-radius: 30px;
 		/* 楕円から角丸へ */
 		height: auto !important;
 		display: flex !important;

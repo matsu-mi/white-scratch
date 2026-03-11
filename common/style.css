@@ -1763,7 +1763,9 @@ footer > p {
 /* 【下段】After画像：全幅で表示 */
 
 	.feature-images-after {
-		width: 100% !important;
+		width: 90% !important;
+		flex: none !important;
+		margin: 0 auto !important;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
@@ -1840,9 +1842,9 @@ footer > p {
 
 	.footer-wrapper {
 		flex-direction: column;
-		width: 100%;
+		width: 100% !important;
 		gap: 30px;
-		margin-bottom: 20px;
+		margin: 0 0 20px 0 !important;
 	}
 
 	.company-info {

@@ -1736,13 +1736,15 @@ footer > p {
 
 	.benefits-visual {
 		order: -1;
+		overflow: hidden;
+		border-radius: 50%;
 	}
 
 /* Flow */
 
 	.flow-items {
 		grid-template-columns: 1fr;
-		gap: 30px;
+		gap: 0;
 	}
 
 	.flow-items::before {
@@ -1759,11 +1761,7 @@ footer > p {
 
 	.flow-step + .flow-step::before {
 		display: block;
-		position: absolute;
-		top: -26px;
-		left: 50%;
-		transform: translateX(-50%);
-		margin: 0;
+		margin: 10px auto;
 	}
 
 /* Footer */

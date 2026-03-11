@@ -1,0 +1,1926 @@
+@charset "UTF-8";
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	font-feature-settings: "palt";
+    font-kerning: normal;
+}
+
+:root {
+	/* カラー変数 */
+	--green: #7dc044;
+	--green-dark: #5fa02e;
+	--green-light: #d4edaa;
+	/* --yellow: #f5d800; */
+	--yellow: #FFFB00;
+	--yellow-dark: #ffd900;
+	--cream: #f5f5dc;
+	--cream-light: #fafae8;
+	--white: #ffffff;
+	--black: #222222;
+	--gray: #666666;
+	--gray-light: #f0f0f0;
+	/* レイアウト変数 */
+	--max-w: 1400px;
+	--max-w: 80vw;
+	--side-pad: clamp(20px, 4vw, 60px);
+	/* フォント変数 */
+	--font-base: 'Noto Sans JP', sans-serif;
+	--font-round: 'M PLUS Rounded 1c', sans-serif;
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
+body {
+	font-family: var(--font-base);
+	/* 全体のデフォルト */
+	color: var(--black);
+	background: #fff;
+	overflow-x: hidden;
+}
+
+/* 特定の場所だけ詰めを解除する場合 */
+.feature-nomal {
+    font-feature-settings: normal;
+}
+
+
+/* 丸文字・太字を適用する要素を「一括指定」 */
+h3,
+.header-logo,
+.hero-title,
+.section-title,
+.feature-badge-big .w-chance,
+.cta-banner p,
+.flow-num,
+.footer-left .logo {
+	font-family: var(--font-base);
+	font-size: clamp(18px, 2.2vw, 34px);
+	font-weight: 700;
+}
+
+.sub-title {
+	font-size: 24px!important;
+	font-weight: 700;
+	margin-bottom: 10px;
+}
+
+h3 span {
+	font-size: clamp(14px, 2.0vw, 20px);
+	margin-bottom: 20px;
+	font-weight: 500;
+	color: var(--green);
+}
+
+/* 注釈用の共通クラス　コンポーネントクラス（かたまり）c- */
+.c-note {
+    display: block;      /* 改行させる */
+    font-size: 12px;     /* 親に依存せず固定、またはremで指定 */
+    line-height: 1.5;    /* 読みやすい行間 */
+    color: #666;         /* 本文より少し薄く */
+    margin-top: 8px;     /* 上の要素との距離 */
+}
+
+/* 擬似要素で文頭に※マーク */
+/* .c-note::before {
+    content: "※";
+    display: inline;
+} */
+
+/* ユーティリティクラス（単機能） */
+.u-text-center { text-align: center !important; }
+.u-text-right  { text-align: right !important; }
+.u-text-left  { text-align: left !important; }
+
+
+
+
+/* ========== HEADER ========== */
+header {
+	/* background: #fff; */
+	/* border-bottom: 1px solid #e0e0e0; */
+	position: sticky;
+	top: 0;
+	z-index: 100;
+	/* box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08); */
+}
+
+.header-inner {
+	max-width: var(--max-w);
+	margin: 0 auto;
+	padding: 10px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 20px;
+}
+
+.header-logo img {
+	width: 10vw;
+}
+
+nav {
+	display: flex;
+	align-items: center;
+	gap: clamp(12px, 2.5vw, 24px);
+}
+
+nav a {
+	text-decoration: none;
+	color: var(--black);
+	font-size: clamp(11px, 1.2vw, 18px);
+	font-weight: 500;
+	white-space: nowrap;
+	transition: color 0.2s;
+}
+
+nav a:hover {
+	color: var(--green);
+}
+
+.btn-cta-header {
+	background: var(--green);
+	color: var(--white) !important;
+	border: 2px solid var(--white);
+	padding: 15px 40px;
+	border-radius: 10px;
+	font-weight: 500;
+	font-size: clamp(11px, 1.5vw, 18px) !important;
+	transition: background 0.2s, transform 0.1s;
+}
+
+.btn-cta-header:hover {
+	background: var(--green-dark);
+	transform: translateY(-1px);
+}
+
+/* ========== HERO ========== */
+.hero {
+	/* background: var(--cream-light); */
+	padding: 60px var(--side-pad);
+	position: relative;
+	overflow: hidden;
+}
+
+.hero-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: var(--max-w);
+    margin: 0 auto;
+    gap: 0; /* gapをなくしてネガティブマージンで調整 */
+}
+
+.hero-text {
+    flex: 1;
+    z-index: 10;
+    position: relative;
+    /* テキストが画像に隠れないよう最小幅を確保 */
+    min-width: 50%; 
+}
+
+.hero-text > div > img {
+	width: 20vw;
+	margin-bottom: 50px;
+}
+
+.hero-title {
+	font-size: clamp(40px, 3.5vw, 60px);
+	font-weight: 700 !important;
+	line-height: 1.4;
+	color: var(--black);
+	margin-bottom: 20px;
+}
+
+.hero-desc {
+	font-size: clamp(14px, 1.3vw, 16px);
+	line-height: 1.8;
+	color: var(--gray);
+}
+
+.btn-primary {
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	background: var(--yellow-dark);
+	color: var(--black);
+	font-size: clamp(18px, 2vw, 24px)!important;
+	font-weight: 700;
+	padding: 30px clamp(70px,10%,100px) ;
+	border-radius: 100px;
+	text-decoration: none;
+	/* box-shadow: 3px 3px 0 var(--yellow-dark); */
+	/* transition: transform 0.15s, box-shadow 0.15s; */
+	margin-top: 50px;
+	letter-spacing: 0.1em;
+	z-index: 1000;
+	position: relative;
+}
+
+/* 1. アニメーションの「動きの台本」を作る */
+@keyframes beyon-beyon {
+    0%   { transform: translateX(0); }       /* スタート：元の位置 */
+    40%  { transform: translateX(50px); }    /* 勢いよく行き過ぎる（20pxより遠くへ） */
+    60%  { transform: translateX(10px); }    /* 少し戻る */
+    80%  { transform: translateX(30px); }    /* また少し行き過ぎる */
+    100% { transform: translateX(0); }    /* 20pxの位置でピタッと止まる */
+}
+
+/* 2. 矢印（.arrow）の設定 */
+.btn-primary .arrow {
+    display: inline-block; /* 動かすために必須！ */
+    /* transition は、戻る時のために残しておく（0.2sくらいでスッと戻す） */
+    transition: transform 0.2s ease; 
+}
+
+/* 3. ★ホバー時にアニメーションを発動！ */
+.btn-primary:hover .arrow {
+    /* beyon-beyon：作った台本を使う
+       0.5s：0.5秒かけて1周する
+       ease-out：動き出しを速く、終わりをゆっくり
+    */
+    animation: beyon-beyon 0.5s ease-out forwards;
+}
+
+.hero-image {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+/* 1. スクラッチコンテナを120%拡大 (540px * 1.2 = 648px) */
+.scratch-container {
+    position: relative;
+    flex: 0 0 648px;
+	/* 固定幅を120%に */
+    height: 648px;
+	/* 高さを120%に */
+	margin: 0 0 0 -100px;
+    z-index: 1;
+    overflow: visible;
+	/* 念のためはみ出しを許容 */
+	/* ↓ここを追加：中の要素を中央に配置する準備 */
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+/* 2. SVGと中の画像をコンテナサイズに追従させる */
+.scratch-svg {
+    width: 100%;
+    height: 100%;
+}
+
+/* 元のコードで 540px に固定されていた箇所を解除 */
+.scratch-svg image {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+/* 3. 背景の top-image.png もサイズを合わせる */
+.scratch-container p img {
+    width: 100%;
+    height: auto;
+}
+
+.hero-image-mockup {
+	width: 100%;
+	max-width: 480px;
+	background: linear-gradient(135deg, #e8f5d0 0%, #f0f9e0 100%);
+	border-radius: 16px;
+	padding: 20px;
+	position: relative;
+	overflow: hidden;
+	min-height: 280px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.hero-image-mockup .scratch-visual {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: 8px;
+	width: 100%;
+}
+
+.scratch-card {
+	aspect-ratio: 1;
+	background: linear-gradient(135deg, #c8e08a, #a8c860);
+	border-radius: 8px;
+	border: 2px solid rgba(255, 255, 255, 0.6);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: clamp(18px, 2vw, 28px);
+	box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.15);
+	transition: transform 0.3s;
+}
+
+.scratch-card:hover {
+	transform: scale(1.08) rotate(-3deg);
+}
+
+.scratch-card.revealed {
+	background: linear-gradient(135deg, #fff9c4, #ffe082);
+	font-weight: 900;
+	color: var(--green-dark);
+
+	font-size: clamp(14px, 1.5vw, 20px);
+}
+
+.hero-badge {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	background: var(--yellow);
+	border-radius: 50%;
+	width: 80px;
+	height: 80px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	font-size: 10px;
+	font-weight: 900;
+	text-align: center;
+	line-height: 1.2;
+	box-shadow: 3px 3px 0 var(--yellow-dark);
+
+}
+
+/* FVのタイトル全体の調整 */
+.hero-title {
+
+	line-height: 1.6;
+	font-weight: 900;
+	color: #222;
+}
+
+.text-dots {
+    display: inline-flex;
+	margin-right: -10px;
+}
+
+.text-dots span {
+    display: inline-block;
+    position: relative;
+    /* 距離を詰めたい場合はここを小さく */
+    /* padding-top: 0.2em;  */
+}
+
+.text-dots span::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    /* 大きさを変えるときは 6px を変更 */
+    width: 8px;
+    height: 8px;
+    background-color: #7dc044;
+    border-radius: 50%;
+}
+
+/* 2. 中段の文字を少し小さく、細くして強弱をつける */
+.text-sub {
+	font-size: 0.7em;
+	/* 親のh2より少し小さく */
+	display: inline-block;
+	margin-top: 5px;
+	font-weight: 600;
+}
+
+/* 3. ペットがいても安心！ の強調ライン */
+.text-highlight {
+	display: inline-block;
+	/* 蛍光ペン風の黄色ライン（下半分に色を乗せる） */
+	background: linear-gradient(transparent 60%, #fffb00 60%);
+	padding: 0 4px;
+}
+
+/* レスポンシブ：1000px以下の調整 */
+@media (max-width: 1000px) {
+	.hero-title {
+		font-size: clamp(22px, 4vw, 32px);
+	}
+
+	.text-sub {
+		display: block;
+		/* ノートPC等で幅が狭い場合は改行を強調 */
+	}
+}
+
+/* ========== SECTION COMMON ========== */
+section {
+	padding: 70px var(--side-pad);
+}
+
+.section-inner {
+	max-width: var(--max-w);
+	margin: 0 auto 50px;
+	text-align: center;
+	display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.section-inner p {
+	font-size: clamp(14px,2vw,20px);
+	text-align: left;
+	display: inline-flex;
+}
+
+.section-title {
+	text-align: center;
+	margin-bottom: 40px;
+	padding-bottom: 16px;
+	/* afterの擬似要素使わないから非表示 */
+	/* position: relative; */
+}
+
+/* .section-title::after {
+	content: '';
+	position: absolute;
+	bottom: 0;
+	left: 50%;
+	transform: translateX(-50%);
+	width: 60px;
+	height: 4px;
+	background: var(--green);
+	border-radius: 2px;
+} */
+
+/* ========== FEATURES (Wチャンス) ========== */
+.features-section {
+	background: var(--green);
+	padding: 60px var(--side-pad);
+	position: relative;
+	z-index: 0;
+}
+
+/* 上部のギザギザ境界線 */
+.features-section::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: -4.9vw; /* ギザギザの高さ */
+  left: 0;
+  width: 100%;
+  height: 5vw;
+  /* preserveAspectRatio='none' を追加して、横に引き伸ばせるようにします */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1500 81' fill='%237dc044' preserveAspectRatio='none'%3E%3Cpath d='M1493.98 0C1471.25 12.8975 1457.26 24.3878 1432.61 36.5934L1435.38 34.2845C1432.69 35.505 1429.45 37.2231 1425.81 39.26L1402.08 52.7095L1422 34.8054L1392.7 0.559747C1367.86 13.4728 1341.69 27.1088 1316.04 40.4806C1304.37 44.3832 1294.17 47.7961 1285.21 50.7892L1271.91 29.0369C1253.26 39.0967 1233.74 49.6309 1213.78 60.3982L1201.69 67.1929L1211.22 57.4284L1177.7 18.4716C1148.75 33.1183 1124.96 45.2695 1104.66 55.7881L1086.85 30.3973C1083.24 32.1155 1079.54 33.8802 1075.75 35.6761L1073.13 31.9367C1073.05 32.0144 1072.98 32.0921 1072.9 32.1699L1075.46 35.816C1075.35 35.8627 1075.25 35.9171 1075.15 35.9637L1072.66 32.4187C1068.9 36.3291 1065.71 39.2056 1063.03 41.7089C1060.18 43.0616 1057.29 44.4299 1054.36 45.8137C1059.4 41.7244 1065.93 35.2951 1071.5 30.7861L1070.31 29.0757C1063.08 36.1814 1057.14 42.0743 1052.57 46.6533C1043.4 50.9914 1033.9 55.4771 1024.18 60.0484L1015.23 45.1684C1013.43 46.0392 1011.65 46.9099 1009.88 47.765L1005.73 40.8615C997.74 46.4123 989.497 52.1342 981.099 57.9571L969.63 65.8324L977.966 54.6064L936.1 9.78779C931.076 12.6409 925.943 15.5641 920.733 18.5183L917.451 15.0043C915.24 18.2306 913.217 21.1849 911.405 23.8126C888.858 36.6168 865.264 49.9963 843.288 62.4895L832.312 46.5756C829.624 48.0605 826.663 49.7164 823.507 51.4811L818.171 43.738C807.89 52.9816 797.585 62.2874 787.257 71.6476C785.406 72.6582 783.562 73.6689 781.718 74.6795L781.679 74.6562C783.515 71.9896 785.343 69.3231 787.156 66.6487L745.203 22.4598C740.922 25.0331 736.656 27.6142 732.43 30.2108L730.82 28.516C726.453 33.8724 728.906 27.6919 722.399 36.4224C718.766 38.7003 715.188 40.9781 711.641 43.2637L695.001 52.7017L714.922 34.7976L685.657 0.559747C660.813 13.4728 634.642 27.1088 608.994 40.4806C597.322 44.3832 587.127 47.7961 578.158 50.7892L564.861 29.0369C546.213 39.0967 526.69 49.6309 506.737 60.3982L494.643 67.1929L504.174 57.4284L470.651 18.4716C441.699 33.1183 417.917 45.2695 397.613 55.7881L379.801 30.3973C376.191 32.1155 372.488 33.8802 368.707 35.6761L366.082 31.9367C366.004 32.0144 365.934 32.0921 365.856 32.1699L368.41 35.816C368.301 35.8627 368.199 35.9171 368.098 35.9637L365.613 32.4187C361.848 36.3291 358.66 39.2056 355.981 41.7089C353.129 43.0616 350.239 44.4299 347.309 45.8137C352.348 41.7244 358.879 35.2951 364.457 30.7861L363.262 29.0757C356.035 36.1814 350.09 42.0743 345.528 46.6533C336.348 50.9914 326.848 55.4771 317.137 60.0484L308.184 45.1684C306.387 46.0392 304.598 46.9099 302.833 47.765L298.684 40.8615C290.692 46.4123 282.45 52.1342 274.052 57.9571L262.583 65.8324L270.919 54.6064L229.052 9.78779C224.029 12.6409 218.896 15.5641 213.685 18.5183L210.404 15.0043C208.193 18.2306 206.17 21.1849 204.357 23.8126C181.811 36.6168 158.217 49.9963 136.241 62.4895L125.264 46.5756C122.577 48.0605 119.616 49.7164 116.46 51.4811L111.124 43.738C100.843 52.9816 90.5381 62.2874 80.2101 71.6476C78.3351 72.6738 76.4601 73.7 74.593 74.7184C76.4445 72.0363 78.2804 69.3386 80.1163 66.6487L38.1715 22.4754C33.8903 25.0487 29.6247 27.6297 25.3982 30.2263L23.7888 28.5315C19.4217 33.888 21.8748 27.7075 15.367 36.4379C10.5936 39.431 5.88275 42.4241 1.26561 45.425L0 45.977V81H1500V6.43709L1493.98 0Z' /%3E%3C/svg%3E");
+  background-size: 100% 100%; /* これで横幅いっぱいに引き伸ばされます */
+  background-repeat: no-repeat;
+  z-index: 10;
+}
+
+/* 下側のギザギザ */
+.features-section::after {
+  content: "";
+  display: block;
+  position: absolute;
+  /* 下端に配置 */
+  bottom: -4.9vw; 
+  left: 0;
+  width: 100%;
+  height: 5vw; /* 上側と同じ高さに合わせる */
+  /* 上側と同じSVGを読み込み */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1500 81' fill='%237dc044' preserveAspectRatio='none'%3E%3Cpath d='M1493.98 0C1471.25 12.8975 1457.26 24.3878 1432.61 36.5934L1435.38 34.2845C1432.69 35.505 1429.45 37.2231 1425.81 39.26L1402.08 52.7095L1422 34.8054L1392.7 0.559747C1367.86 13.4728 1341.69 27.1088 1316.04 40.4806C1304.37 44.3832 1294.17 47.7961 1285.21 50.7892L1271.91 29.0369C1253.26 39.0967 1233.74 49.6309 1213.78 60.3982L1201.69 67.1929L1211.22 57.4284L1177.7 18.4716C1148.75 33.1183 1124.96 45.2695 1104.66 55.7881L1086.85 30.3973C1083.24 32.1155 1079.54 33.8802 1075.75 35.6761L1073.13 31.9367C1073.05 32.0144 1072.98 32.0921 1072.9 32.1699L1075.46 35.816C1075.35 35.8627 1075.25 35.9171 1075.15 35.9637L1072.66 32.4187C1068.9 36.3291 1065.71 39.2056 1063.03 41.7089C1060.18 43.0616 1057.29 44.4299 1054.36 45.8137C1059.4 41.7244 1065.93 35.2951 1071.5 30.7861L1070.31 29.0757C1063.08 36.1814 1057.14 42.0743 1052.57 46.6533C1043.4 50.9914 1033.9 55.4771 1024.18 60.0484L1015.23 45.1684C1013.43 46.0392 1011.65 46.9099 1009.88 47.765L1005.73 40.8615C997.74 46.4123 989.497 52.1342 981.099 57.9571L969.63 65.8324L977.966 54.6064L936.1 9.78779C931.076 12.6409 925.943 15.5641 920.733 18.5183L917.451 15.0043C915.24 18.2306 913.217 21.1849 911.405 23.8126C888.858 36.6168 865.264 49.9963 843.288 62.4895L832.312 46.5756C829.624 48.0605 826.663 49.7164 823.507 51.4811L818.171 43.738C807.89 52.9816 797.585 62.2874 787.257 71.6476C785.406 72.6582 783.562 73.6689 781.718 74.6795L781.679 74.6562C783.515 71.9896 785.343 69.3231 787.156 66.6487L745.203 22.4598C740.922 25.0331 736.656 27.6142 732.43 30.2108L730.82 28.516C726.453 33.8724 728.906 27.6919 722.399 36.4224C718.766 38.7003 715.188 40.9781 711.641 43.2637L695.001 52.7017L714.922 34.7976L685.657 0.559747C660.813 13.4728 634.642 27.1088 608.994 40.4806C597.322 44.3832 587.127 47.7961 578.158 50.7892L564.861 29.0369C546.213 39.0967 526.69 49.6309 506.737 60.3982L494.643 67.1929L504.174 57.4284L470.651 18.4716C441.699 33.1183 417.917 45.2695 397.613 55.7881L379.801 30.3973C376.191 32.1155 372.488 33.8802 368.707 35.6761L366.082 31.9367C366.004 32.0144 365.934 32.0921 365.856 32.1699L368.41 35.816C368.301 35.8627 368.199 35.9171 368.098 35.9637L365.613 32.4187C361.848 36.3291 358.66 39.2056 355.981 41.7089C353.129 43.0616 350.239 44.4299 347.309 45.8137C352.348 41.7244 358.879 35.2951 364.457 30.7861L363.262 29.0757C356.035 36.1814 350.09 42.0743 345.528 46.6533C336.348 50.9914 326.848 55.4771 317.137 60.0484L308.184 45.1684C306.387 46.0392 304.598 46.9099 302.833 47.765L298.684 40.8615C290.692 46.4123 282.45 52.1342 274.052 57.9571L262.583 65.8324L270.919 54.6064L229.052 9.78779C224.029 12.6409 218.896 15.5641 213.685 18.5183L210.404 15.0043C208.193 18.2306 206.17 21.1849 204.357 23.8126C181.811 36.6168 158.217 49.9963 136.241 62.4895L125.264 46.5756C122.577 48.0605 119.616 49.7164 116.46 51.4811L111.124 43.738C100.843 52.9816 90.5381 62.2874 80.2101 71.6476C78.3351 72.6738 76.4601 73.7 74.593 74.7184C76.4445 72.0363 78.2804 69.3386 80.1163 66.6487L38.1715 22.4754C33.8903 25.0487 29.6247 27.6297 25.3982 30.2263L23.7888 28.5315C19.4217 33.888 21.8748 27.7075 15.367 36.4379C10.5936 39.431 5.88275 42.4241 1.26561 45.425L0 45.977V81H1500V6.43709L1493.98 0Z' /%3E%3C/svg%3E");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  /* 180度回転させて上下反転 */
+  transform: rotate(180deg);
+  z-index: 10;
+}
+
+.features-inner {
+	max-width: var(--max-w);
+	padding: 60px clamp(0px, 1vw, 200px);
+	margin: 0 auto;
+	display: grid;
+	gap: 50px;
+	align-items: center;
+}
+
+
+.feature-images {
+        max-width: 800px; /* ここでお好みの幅に調整してください */
+        margin: 0 auto;   /* 中央に配置 */
+        display: flex;    /* 横並びを維持 */
+        justify-content: center; /* 中身を中央寄せ */
+        align-items: center;
+    }
+
+/* 画像がはみ出さないように */
+.feature-images img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* 左側の「before」箱：中身をさらに横並びにする */
+.feature-images-before {
+	flex: 4;
+    display: flex;
+    align-items: flex-end; /* 画像の下端を揃える */
+}
+
+/* beforeの中の各要素を50%ずつに */
+.feature-images-before > div {
+    flex: 3;
+}
+
+.feature-images-before > div:last-child {
+	margin-left: -20px;
+}
+
+/* 親要素（吹き出しと画像を包むエリア） */
+.feature-images-balloon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;  /* これで左右中央揃え */
+    gap: 20px;            /* ★ これで吹き出しと画像の間隔を調整 */
+}
+
+
+.balloon {
+	min-width: 120%;
+    position: relative;
+    display: inline-block; /* 文字幅に合わせる */
+    padding: clamp(16px,2vw,20px) clamp(4px,1vw,30px);    /* 上下 左右の余白 */
+    background: #fff;
+    border-radius: 50px;   /* カプセル型にする */
+    text-align: center;
+	font-size: clamp(20px,2vw,16px);
+    font-weight: bold;
+    line-height: 1.4;
+    filter: drop-shadow(0 2px 5px rgba(0,0,0,0.1)); /* 軽い影 */
+}
+
+
+/* 下の三角部分 */
+.balloon::after {
+    content: "";
+    position: absolute;
+    top: 100%;             /* 吹き出しの真下 */
+    left: 50%;
+    transform: translateX(-50%);
+    border-style: solid;
+    border-width: 15px 10px 0 10px; /* 三角のサイズ */
+    border-color: #fff transparent transparent transparent;
+}
+
+
+.feature-images-arrow {
+	font-size: clamp(30px,10em,60px);
+	color: var(--white);
+	flex: 1;
+	display: flex;            /* 自身をFlexboxにする */
+    justify-content: center;  /* 左右中央 */
+    align-items: center;
+	align-self: center;
+}
+
+/* 右側：大きな画像の方 */
+.feature-images-after {
+    text-align: center; /* 画像を中央に */
+	flex: 5;
+	color: var(--white);
+	font-size: 24px;
+}
+
+.feature-images-after img {
+    width: 80%;
+    height: auto;
+    display: block;
+	margin-top: 20px;
+	/* ↓これを追加：ブロック要素を中央に寄せる魔法のコード */
+	margin-left: auto;
+    margin-right: auto;
+}
+
+
+
+.feature-badge-big {
+	background: var(--yellow);
+	border-radius: 16px;
+	padding: 30px;
+	text-align: center;
+	position: relative;
+	box-shadow: 0 8px 0 var(--yellow-dark);
+}
+
+.feature-badge-big .w-chance {
+
+	font-size: clamp(40px, 6vw, 80px);
+	font-weight: 900;
+	color: var(--green);
+	line-height: 1;
+	text-shadow: 3px 3px 0 rgba(0, 0, 0, 0.15);
+}
+
+.feature-badge-big .subtitle {
+	font-size: clamp(14px, 1.5vw, 18px);
+	font-weight: 700;
+	color: var(--black);
+	margin-top: 8px;
+}
+
+.feature-badge-big .detail {
+	font-size: clamp(11px, 1.1vw, 13px);
+	color: #555;
+	margin-top: 6px;
+}
+
+.feature-text {
+	width: clamp(400px,50vw,1200px);
+	color: var(--black);
+	display: flex;
+    gap: 50px;
+    align-items: center;
+	background-color: var(--white);
+	border-radius: 2000px;
+	padding: 60px 100px 90px;
+	margin: 50px auto 0;
+	position: relative;
+}
+
+.feature-text h3 {
+	margin-bottom: 20px;
+}
+
+.feature-text ul {
+	list-style: none;
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+}
+
+.feature-text ul li {
+	display: flex;
+	align-items: flex-start;
+	gap: 10px;
+	font-size: clamp(18px, 2.5vw, 24px);
+	line-height: 1.2;
+}
+
+/* 白スクラッチの冒頭のレ点チェック */
+.feature-text ul li::before {
+	content: '✓';
+	flex-shrink: 0;
+	width: 25px;
+	height: 25px;
+	background: var(--green);
+	color: var(--white);
+	border-radius: 4px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 13px;
+	font-weight: 900;
+	margin-top: 2px;
+}
+
+/* 親要素：3枚の重なりの基準 */
+.feature-images-sample {
+    flex: 5;
+    position: relative;
+	/* ★ 高さを強制的に0にします */
+	height: 0;
+	/* ★ 中身（画像）は見せる */
+    overflow: visible;
+}
+
+/* 共通：pタグを浮かせ、アニメーションをセット */
+.scratch-item {
+    position: absolute;
+	top: 0;
+	left: 0;
+    width: 220px;
+	/* 画像のサイズ感に合わせて調整 */
+	opacity: 0;
+	/* 最初は透明にしておく */
+    /* animation: fuwafuwa 4s ease-in-out infinite; */
+	animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.scratch-item img {
+    width: 100%;
+    height: auto;
+	object-fit: contain; /* ★画像の比率を保つ */
+}
+
+/* --- ★ 個別配置（bottom基準でマイナス値を使い、下へはみ出させる） --- */
+
+/* 1枚目（一番奥） ★ */
+.item-green {
+	top: -220px;
+	left: 10%;
+	z-index: 1;
+    animation-delay: 0;
+}
+
+/* 2枚目（真ん中） ★ */
+.item-orange {
+	top: -130px;
+    left: 45%;
+    z-index: 2;
+    animation-delay: 0.2s;
+}
+
+/* 3枚目（一番手前） ★ */
+.item-blue {
+	bottom: 30px;
+    left: -5%;
+    z-index: 3;
+    animation-delay: 0.4s;
+}
+
+
+/* 1. アニメーション本体の定義を追加 */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px); /* 50px下から */
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);    /* 元の位置へ */
+  }
+}
+
+/* 2. 適用する箇所を書き換え */
+.対象のクラス名 {
+    animation: fadeInUp 0.8s ease-out forwards;
+}
+
+
+
+/* scratch cards in features */
+.scratch-preview {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 10px;
+	margin-top: 20px;
+}
+
+.scratch-mini {
+	background: linear-gradient(135deg, #b8d870, #8fc030);
+	border-radius: 10px;
+	padding: 16px 8px;
+	text-align: center;
+	border: 2px solid rgba(255, 255, 255, 0.4);
+	box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.scratch-mini .icon {
+	font-size: 24px;
+}
+
+.scratch-mini .label {
+	font-size: 10px;
+	color: #fff;
+	font-weight: 700;
+	margin-top: 4px;
+}
+
+/* ========== USAGE SCENES ========== */
+.scenes-section {
+	background: #fff;
+}
+
+.scenes-grid {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 30px;
+	margin-top: 20px;
+}
+
+.scene-card {
+	border-radius: 12px;
+	overflow: hidden;
+	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+	transition: transform 0.3s;
+}
+
+.scene-card:hover {
+	transform: translateY(-4px);
+}
+
+.scene-img {
+	width: 100%;
+	aspect-ratio: 4/3;
+	object-fit: cover;
+	display: block;
+	background: var(--gray-light);
+}
+
+.scene-img-placeholder {
+	width: 100%;
+	aspect-ratio: 4/3;
+	background: linear-gradient(135deg, #e0e0e0, #c8c8c8);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 40px;
+}
+
+.scene-img-placeholder img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* これで4/3の形に切り抜かれます */
+}
+
+.scene-body {
+	padding: 25px;
+	background: #fff;
+}
+
+
+.scene-desc {
+	font-size: 18px;
+	color: var(--gray);
+	line-height: 1.7;
+}
+
+.section-point {
+	text-align: center;
+	font-size: clamp(20px,2.1em,40px);
+	font-weight: 600;
+	padding-top: 40px;
+	margin-bottom: 50px;
+}
+
+/* ========== CTA BANNER ========== */
+/* .cta-banner {
+	background: var(--green);
+	padding: 30px var(--side-pad);
+	text-align: center;
+}
+
+.cta-banner p {
+	font-size: clamp(20px, 3vw, 36px);
+	font-weight: 900;
+	color: #fff;
+	text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.2);
+}
+
+.cta-banner p span {
+	color: var(--yellow);
+} */
+
+/* ========== BENEFITS ========== */
+.benefits-section {
+	background: var(--green);
+	position: relative;
+	overflow: hidden;
+	padding-top: 0;
+	padding-bottom: 0;
+	padding-right: 0;
+}
+
+.benefits-inner {
+	max-width: var(--max-w);
+	margin: 0 auto;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 60px;
+	align-items: center;
+	color: #fff;
+}
+
+.benefits-content h3 {
+	/* font-size: clamp(18px, 2.5vw, 30px); */
+	font-weight: 900;
+	margin-bottom: 12px;
+}
+
+.benefits-section .section-point {
+	text-align: left;
+}
+
+.benefit-desc {
+	font-size: 18px;
+	line-height: 1.8;
+	margin-bottom: 50px;
+}
+
+.benefits-visual {
+	position: relative;
+	min-height: 300px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.benefits-visual {
+	text-align: center; /* 画像を中央に */
+	flex: 4;
+	color: var(--white);
+	font-size: 24px;
+}
+
+.benefits-visual img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+
+
+/* ========== FLOW ========== */
+.flow-section {
+	background: #fff;
+}
+
+.flow-lead {
+	text-align: center;
+	display: inline-flex;
+	flex-direction: column;
+}
+
+.flow-items {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: 20px;
+	position: relative;
+	/* 左右に余白を追加（数値はお好みで調整してください） */
+	margin: 50px 5%;
+    padding-bottom: 150px;
+	border-bottom: 2px solid var(--gray);
+}
+
+/* 各ステップを「基準」にする */
+.flow-step {
+    position: relative;
+	border: 2px solid var(--green);
+	border-radius: 20px;
+	padding: 20px;
+	text-align: center;
+	z-index: 1;
+	margin-right: 20px;
+}
+
+/* 各ステップの右側に三角を出す */
+.flow-step::after {
+    content: '';
+    position: absolute;
+	top: 50%;
+	/* 上から50%の位置へ */
+    transform: translateY(-50%);
+	/* 自身の高さ半分だけ上にずらして中央へ */
+    right: -30px;
+	/* ステップの外側（右）へはみ出させる数値 */
+    
+    /* 三角形を作る設定 */
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 10px 0 10px 15px;
+    border-color: transparent transparent transparent var(--green);
+    
+    z-index: 1;
+}
+
+/* 最後のステップ（納品）の後ろには三角を出さない */
+.flow-step:last-child::after {
+    display: none;
+}
+
+
+.flow-num {
+	/* width: auto; */
+	border-radius: 20px;
+	background: var(--green);
+	color: #fff;
+	font-size: 16px;
+	font-weight: 500;
+	display: inline-block;
+	align-items: center;
+	justify-content: center;
+	margin: 0 auto 16px;
+	padding: 3px 20px;
+}
+
+.flow-num.yellow {
+	background: var(--yellow);
+	color: var(--black);
+	box-shadow: 0 4px 0 var(--yellow-dark);
+}
+
+
+.flow-desc {
+	font-size: 12px;
+	color: var(--gray);
+	line-height: 1.7;
+	padding-top: 10px;
+	border-top: 2px dotted var(--gray);
+}
+
+/* ========== PRICING ========== */
+.pricing-section {
+	text-align: center;
+}
+
+/* .pricing-desc {
+	font-size: clamp(14px, 1.4vw, 16px);
+	color: #555;
+	margin-bottom: 32px;
+	line-height: 1.8;
+} */
+
+.btn-pricing {
+	display: inline-flex;
+	align-items: center;
+	gap: 10px;
+	background: var(--green);
+	color: #fff;
+	font-size: clamp(14px, 1.5vw, 17px);
+	font-weight: 700;
+	padding: 18px 40px;
+	border-radius: 40px;
+	text-decoration: none;
+	box-shadow: 0 5px 0 var(--green-dark);
+	transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.btn-pricing:hover {
+	transform: translateY(3px);
+	box-shadow: 0 2px 0 var(--green-dark);
+}
+
+
+/* ========== FAQ ========== */
+.faq-section {
+	background: #FFFBE5;
+}
+
+.faq-list {
+	width: 80%;
+	margin: 0 auto; /* これでリスト自体は画面の真ん中に来ます */
+	display: flex;
+	flex-direction: column;
+	gap: 50px;
+    align-items: stretch;
+	/* ここを追加：子要素を横幅いっぱいに強制する */
+}
+
+.faq-item {
+	width: 100%; /* 親の幅(80%)いっぱいに広がる */
+	overflow: hidden;
+	/* box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07); */
+}
+
+.faq-q {
+	background: var(--green);
+	border-radius: 50px;
+	display: flex;
+	align-items: center;
+	gap: 14px;
+	padding: 18px 20px;
+	cursor: pointer;
+	user-select: none;
+	transition: background 0.2s;
+}
+
+.faq-q-icon {
+	flex-shrink: 0;
+	color: var(--white);
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-weight: 500;
+	font-size: 24px;
+	padding-bottom: 0.2em;
+	margin-left: 0.5em;
+	margin-right: 0.2em;
+}
+
+.faq-q-text {
+	color: var(--white);
+	flex: 1;
+	font-weight: 500;
+	font-size: clamp(12px, 1.5vw, 24px);
+	line-height: 1.5;
+	text-align: left;
+}
+
+.faq-toggle {
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+    position: relative; /* 擬似要素の基準にする */
+    transition: transform 0.5s;
+    transform-origin: center;
+    margin-right: 0.5em;
+}
+
+/* 3. 展開中（かつホバーしていない時）：白に戻したい場合はここ */
+.faq-item.open .faq-toggle::before,
+.faq-item.open .faq-toggle::after {
+    background-color: var(--white);
+}
+
+/* 横棒 */
+.faq-toggle::before,
+/* 縦棒 */
+.faq-toggle::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--white);
+	transition: background-color 0.2s;
+}
+
+/* 横棒のサイズ */
+.faq-toggle::before {
+    width: 16px;
+    height: 3px;
+}
+
+/* 縦棒のサイズ */
+.faq-toggle::after {
+    width: 3px;
+    height: 16px;
+}
+
+/* ホバー時 */
+.faq-q:hover {
+	background: var(--white);
+	color: var(--black);
+	border-radius: 50px;
+}
+
+.faq-q:hover .faq-q-text,
+.faq-q:hover .faq-q-icon {
+    color: var(--black);
+}
+
+/* 線を黒くする（白背景で見えるように） */
+.faq-q:hover .faq-toggle::before,
+.faq-q:hover .faq-toggle::after {
+    background-color: var(--black);
+}
+
+
+/* 展開時 */
+.faq-item.open .faq-toggle {
+	transform: rotate(135deg);
+}
+
+.faq-a {
+    text-align: left; 
+	/* ここが重要：text-alignを継承せず、左寄せを確定させる */
+    width: 100%;
+	display: block;
+	max-height: 0;
+	/* 高さを0にして隠す */
+    overflow: hidden;
+	/* 0からはみ出る中身を非表示にする */
+	padding: 0 20px;
+	transition: max-height 0.3s ease, padding 0.3s ease;
+	/* ここで速さを変えられます！ */
+}
+
+.faq-item.open .faq-a {
+	display: block;
+	max-height: 500px;
+	/* 開いた時の最大高さ（中身より大きければOK） */
+    padding: 18px 20px;
+	/* 本来のパディングに戻す */
+}
+
+.faq-a-text {
+	font-size: clamp(12px, 1.2vw, 40px)!important;
+	color: var(--black);
+	line-height: 1.8;
+	text-align: left;
+	display: block;
+    width: 100%;
+}
+
+.faq-cta {
+	text-align: center;
+	margin-top: 32px;
+}
+
+
+/* ========== FOOTER ========== */
+footer {
+	background-color: var(--black);
+	color: var(--white);
+	padding: 100px 5vw 50px;
+}
+@media (max-width: 428px) {
+	footer {
+	width: 100vw;
+	padding: 100px 5vw 50px;
+  }
+}
+
+.footer-wrapper {
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 100px;
+	width: 60vw;
+	max-width: 100vw;
+	margin-left: auto;
+	margin-right: auto;
+}
+@media (max-width: 428px) {
+	.footer-wrapper {
+	margin-bottom: 20px;
+  }
+}
+
+.footer-wrapper ul li {
+    margin-bottom: 10px;
+	list-style: none;
+}
+
+.footer-wrapper ul li a {
+    text-decoration: none;
+	color: var(--white);
+}
+
+footer > p {
+	text-align: center;
+}
+
+.company-info {
+	display: flex;
+	flex-direction: column;
+	width: 20vw;
+	margin-bottom: 30px;
+	gap: 10px;
+}
+
+.company-info > a {
+	width: 100%;
+	font-size: 40px;
+	color: var(--white);
+	text-decoration: none;
+	display: block;
+}
+
+.footer-logo img {
+	width: 100%;
+}
+
+@media (max-width: 428px) {
+	.company-info {
+	width: 90vw;
+  }
+  	.footer-logo {
+		width:60vw;
+	}
+}
+
+.footer-wrapper .cta-adj {
+	color: var(--black);
+	margin-top: 20px;
+	margin-left: 0;
+}
+
+.footer-wrapper .cta-adj:hover {
+	background-color: var(--black);
+	border: 4px solid var(--white);
+	color: var(--white);
+	/* ボタンを右下に移動させる指示を0で打ち消す */
+	transform: translate(0px, 0px);
+	/* 移動した分、影を「なし」にする（または0にする） */
+	box-shadow: 0px 0px 0px 0px #000;
+}
+
+.footer-wrapper .cta-adj:hover::after {
+	content: "";
+	position: absolute;
+	top: 50%;
+	right: 15px;
+	transform: translateY(-50%);
+	/* 三角のデザイン */
+	border-style: solid;
+	border-width: 6px 0 6px 8px;
+	border-color: transparent transparent transparent var(--white);
+}
+
+/* ========== WAVE DIVIDER ========== */
+.wave-divider {
+	width: 100%;
+	overflow: hidden;
+	line-height: 0;
+}
+
+.wave-divider svg {
+	display: block;
+	width: 100%;
+}
+
+/* ========== ZIGZAG EDGE ========== */
+.zigzag-top {
+	width: 100%;
+	height: 30px;
+	background: inherit;
+	position: relative;
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 768px) {
+	:root {
+		--side-pad: 20px;
+	}
+
+	/* Header */
+	nav {
+		display: none;
+	}
+
+	header {
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+
+	.header-logo img {
+		width: 30vw;
+	}
+
+	.header-inner {
+		width: 100% !important;
+		max-width: none !important; /* PC用の1400px制限を解除 */
+		padding: 10px 20px;
+		margin: 0 auto;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 0;
+	}
+
+	.mobile-menu-btn {
+		display: flex;
+		flex-direction: column;
+		gap: 5px;
+		background: none;
+		border: none;
+		cursor: pointer;
+		padding: 4px;
+	}
+
+	.mobile-menu-btn span {
+		display: block;
+		width: 24px;
+		height: 2px;
+		background: var(--black);
+		border-radius: 2px;
+	}
+
+/* Hero */
+    .hero {
+        padding: 0 0 80px;
+    }
+
+    /* 親要素をFlexboxでシンプルに縦並びにする */
+    .hero-inner {
+        display: flex !important;
+        flex-direction: column-reverse !important;
+        width: 100% !important;
+        padding: 0 !important;
+        margin: 0 auto;
+    }
+
+    /* テキストの箱を横いっぱいに広げる */
+    .hero-text {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: -40px auto 0 !important; /* ★少しだけ重なりを浅く調整（画像拡大に対応） */
+        text-align: center !important;
+    }
+
+    .hero-text > div > img {
+        width: 70vw;
+        filter: drop-shadow(0 5px 3px rgba(0, 0, 0, 0.2));
+    }
+
+    .hero-title {
+        display: block !important;
+        width: 100% !important;
+        font-size: 28px !important;
+        line-height: 1.5 !important;
+        white-space: normal !important;
+        text-align: center;
+    }
+
+    .hero-title span {
+        display: inline !important; 
+        width: auto !important;
+    }
+
+    .hero-desc {
+        font-size: 12px;
+    }
+
+    .scratch-container {
+        position: relative;
+        width: 90%;
+        max-width: 400px;
+        height: auto !important; /* ★追加：PC用の固定高さを解除 */
+        margin: 0 auto;
+        aspect-ratio: 1 / 1; 
+        overflow: visible;
+    }
+
+    /* 下の丸い画像 */
+    .scratch-container img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100% !important;
+        height: 100% !important;
+        margin: 0 !important;
+        display: block;
+        object-fit: cover; 
+        z-index: 1;
+    }
+
+    /* 上のSVG（スクラッチ層） */
+    .scratch-svg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100% !important;
+        height: 100% !important;
+        z-index: 2;
+        transform: scale(1.03);
+        transform-origin: center;
+    }
+
+	/* Features */
+	.features-inner {
+		grid-template-columns: 1fr;
+		gap: 30px;
+	}
+
+	/* 全体を縦に並べる（Before → 矢印 → After） */
+    .feature-images {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 20px !important;
+    }
+
+    /* 【上段】カードと丸い画像を横に並べて重ねる */
+    .feature-images-before {
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: flex-end !important; /* 下揃え */
+        justify-content: center !important;
+        width: 100% !important;
+        position: relative;
+    }
+
+    /* カード側の幅（左） */
+    .feature-images-balloon {
+        width: 60% !important;
+        flex: none !important;
+    }
+
+    /* 丸い画像側の幅（右）と重なり調整 */
+    .feature-images-before > div:last-child {
+        width: 60% !important;
+        flex: none !important;
+        margin-left: -15% !important; /* ここでカードの上に重ねる */
+        z-index: 2;
+    }
+
+    /* 矢印を「下向きの▼」に変更する（擬似要素や文字で調整） */
+    .feature-images-arrow p {
+        transform: rotate(90deg); /* 右向き▶を90度回して▼にする */
+        font-size: 30px;
+        color: #fff;
+        margin: 10px 0;
+    }
+
+    /* 【下段】After画像を大きく見せる */
+    .feature-images-after {
+        width: 80% !important;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .feature-images-after img {
+        width: 80% !important; /* After画像は主役なので大きく */
+    }
+
+    /* 画像の基本設定 */
+    .feature-images img {
+        width: 100% !important;
+        height: auto !important;
+    }
+
+	/* Scenes */
+	.scenes-grid {
+		grid-template-columns: 1fr;
+		gap: 20px;
+	}
+
+	/* Benefits */
+	.benefits-inner {
+		grid-template-columns: 1fr;
+		gap: 30px;
+	}
+
+	.benefits-visual {
+		order: -1;
+	}
+
+	/* Flow */
+	.flow-items {
+		grid-template-columns: 1fr 1fr;
+		gap: 20px;
+	}
+
+	.flow-items::before {
+		display: none;
+	}
+
+	/* Footer */
+	.footer-inner {
+		grid-template-columns: 1fr;
+		gap: 30px;
+	}
+
+	.footer-right {
+		justify-content: flex-start;
+		flex-wrap: wrap;
+		gap: 24px;
+	}
+
+	.feature-images {
+        grid-template-columns: 1fr;
+		/* 縦1列 */
+    }
+
+    .feature-images-before {
+        /* スマホでは横並びだと小さすぎるので、縦並びに戻す */
+        flex-direction: column; 
+        gap: 30px;
+    }
+
+	.feature-images-sample {
+        min-height: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        align-items: center;
+    }
+    
+    .scratch-item {
+        position: static; /* absoluteを解除 */
+        width: 80%;       /* スマホ画面に合わせたサイズ */
+        animation: none;  /* 酔い防止で止めるか、動きを小さくする */
+    }
+
+	.feature-text {
+        flex-direction: column;
+        gap: 30px;
+        padding: 40px 20px; /* スマホでは普通の余白に戻す */
+        border-radius: 20px; /* 楕円から角丸へ */
+    }
+
+    .feature-images-sample {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        align-items: center;
+        overflow: visible; /* はみ出しを維持 */
+    }
+
+    .scratch-item {
+        position: static; /* 重なり・はみ出しを解除して縦並びに */
+        width: 80%;
+        animation: none;
+    }
+}
+
+@media (max-width: 480px) {
+	.flow-items {
+		grid-template-columns: 1fr;
+	}
+
+	section {
+		padding: 50px var(--side-pad);
+	}
+}
+
+/* Mobile nav overlay */
+.mobile-nav-overlay {
+	display: none;
+	position: fixed;
+	inset: 0;
+	background: rgba(255, 255, 255, 0.98);
+	z-index: 200;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 24px;
+}
+
+.mobile-nav-overlay.open {
+	display: flex;
+}
+
+.mobile-nav-overlay a {
+	text-decoration: none;
+	color: var(--black);
+	font-size: 18px;
+	font-weight: 700;
+}
+
+.mobile-nav-close {
+	position: absolute;
+	top: 20px;
+	right: 20px;
+	background: none;
+	border: none;
+	font-size: 28px;
+	cursor: pointer;
+	color: var(--gray);
+}
+
+@media (min-width: 769px) {
+	.mobile-menu-btn {
+		display: none;
+	}
+}
+
+/* Animation */
+@keyframes float {
+
+	0%,
+	100% {
+		transform: translateY(0);
+	}
+
+	50% {
+		transform: translateY(-10px);
+	}
+}
+
+.float-anim {
+	animation: float 3s ease-in-out infinite;
+}
+
+/* 3層目：下に隠れている画像やテキスト */
+.under-image {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	/* background: #ff0080; */
+	color: #000;
+	font-size: 40px;
+	font-weight: bold;
+	z-index: 1;
+	text-align: center;
+	/* padding: 0 20px; */
+}
+
+/* 2層目：銀色のカバーと削りパス（マスク） */
+.scratch-svg {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 2;
+}
+
+/* --- 2. アニメーションの設定 --- */
+.scratch-path {
+	/* アニメーションの共通ルール */
+	animation-name: scratch-anime;
+	animation-timing-function: linear;
+	/* 等速 */
+	animation-fill-mode: forwards;
+	/* 終了後に戻さない */
+}
+
+@keyframes scratch-anime {
+
+	/* JSで計算した --path-length 分だけずらした状態からスタート */
+	from {
+		stroke-dashoffset: var(--path-length);
+	}
+
+	to {
+		stroke-dashoffset: 0;
+	}
+}
+
+/* 親要素のレイアウト */
+.hero-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: var(--max-w);
+    margin: 0 auto;
+}
+
+.hero-text {
+    flex: 1;
+    z-index: 10;
+    position: relative;
+    min-width: 50%;
+}
+
+/* スクラッチコンテナ */
+.scratch-container {
+    position: relative;
+    flex: 0 0 648px; /* 120%サイズ */
+    height: 648px;
+    margin: 0 0 0 -100px; /* テキストへの食い込み */
+    z-index: 1;
+    overflow: visible; /* はみ出しを許容 */
+}
+
+/* 下の画像：基準サイズ（100%） */
+.scratch-container p {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+}
+.scratch-container p img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: contain;
+}
+
+/* 上のSVG：コンテナより一回り大きくし、中央に配置 */
+.scratch-svg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 106% !important; /* コンテナより6%大きく */
+    height: 106% !important;
+    transform: translate(-50%, -50%); /* 中央寄せ */
+    z-index: 2;
+}
+
+/* SVG内の銀色画像も枠いっぱいに広げる */
+.scratch-svg image {
+    width: 100% !important;
+    height: 100% !important;
+    transform: scale(1.01); /* 念押しの微拡大 */
+    transform-origin: center;
+}
+
+/* ============================================================
+   スマホ用設定（789px以下）: 画像の中央寄せとPC設定のリセット
+   ============================================================ */
+@media (max-width: 789px) {
+    /* Hero全体の調整 */
+    .hero {
+        padding: 0 0 80px;
+    }
+
+    /* レイアウトを縦並び（画像が上、文字が下）にして中央揃え */
+    .hero-inner {
+        display: flex !important;
+        flex-direction: column-reverse !important;
+        width: 100% !important;
+        padding: 0 !important;
+        margin: 0 auto !important;
+    }
+
+    /* テキストエリアの中央寄せと重なり調整 */
+    .hero-text {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: -40px auto 0 !important; /* 画像との重なり具合 */
+        text-align: center !important;
+    }
+
+    .hero-title {
+        display: block !important;
+        width: 100% !important;
+        font-size: 28px !important;
+        line-height: 1.5 !important;
+        text-align: center !important;
+    }
+
+    /* スクラッチコンテナ：PC用の「左に100pxずらす」設定をリセット */
+    .scratch-container {
+        position: relative;
+        width: 90%;
+        max-width: 400px;
+        height: auto !important;
+        margin: 0 auto !important; /* ★PCの margin-left を打ち消し */
+        aspect-ratio: 1 / 1; 
+        overflow: visible;
+        flex: none !important;    /* ★PCの 648px 固定幅を解除 */
+    }
+
+    /* 下の画像：親要素に合わせて中央配置 */
+    .scratch-container img,
+    .scratch-container p,
+    .scratch-container p img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100% !important;
+        height: 100% !important;
+        margin: 0 !important;
+        object-fit: cover; 
+        z-index: 1;
+    }
+
+    /* 上のSVG：PC用の「中央座標計算」をリセットし、スマホ用の拡大率を適用 */
+    .scratch-svg {
+        position: absolute;
+        top: 0 !important;    /* ★PCの 50% 設定をリセット */
+        left: 0 !important;   /* ★PCの 50% 設定をリセット */
+        width: 100% !important;
+        height: 100% !important;
+        z-index: 2;
+        /* PC用の translate(-50%, -50%) を解除し、スマホ用の1.03倍拡大を適用 */
+        transform: scale(1.03) !important; 
+        transform-origin: center;
+    }
+}
+
+
+@media screen and (max-width: 789px) {
+    /* 1. 白い楕円を「縦並び」にする */
+    .feature-text {
+        height: auto !important;
+        display: flex !important;
+        flex-direction: column !important; /* 縦に並べる */
+        align-items: center !important;    /* 中央寄せ */
+        padding: 40px 20px !important;
+        position: relative !important;
+    }
+
+    /* 2. テキスト部分：幅を広げて中央に */
+    .feature-text > div:first-child {
+        width: 100% !important;
+        text-align: left; /* リストは見やすいように左寄せ（中央寄せなら center） */
+        margin-bottom: 30px !important; /* 画像との隙間 */
+        position: static !important;
+    }
+
+    /* 3. 画像エリア：バラバラの位置設定を全てリセットして横に並べる */
+    .feature-images-sample {
+        position: static !important;   /* 浮いているのを解除 */
+        display: flex !important;
+        flex-direction: row !important; /* 横に並べる */
+        justify-content: center !important;
+        align-items: center !important;
+        width: 100% !important;
+        margin: 0 auto !important;
+        padding: 0 !important;
+        transform: none !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+    }
+
+    /* 4. 画像1枚ずつ：マイナスマージンで重ねる */
+    .scratch-item {
+        position: relative !important;
+        width: 100px !important;   /* スマホで見やすいサイズ */
+        margin: 0 -20px !important; /* ★左右をマイナスにして重ねる */
+        top: auto !important;      /* バラバラの上下位置をリセット */
+        left: auto !important;     /* バラバラの左右位置をリセット */
+        right: auto !important;
+        bottom: auto !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        transform: none !important;
+    }
+
+    /* 重なり順（右側を上に） */
+    .scratch-item:nth-child(1) { z-index: 1; }
+    .scratch-item:nth-child(2) { z-index: 2; }
+    .scratch-item:nth-child(3) { z-index: 3; }
+
+    .scratch-item img {
+        width: 100% !important;
+        height: auto !important;
+        display: block !important;
+        border-radius: 5px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+}
+

@@ -1508,6 +1508,20 @@ footer > p {
 		display: block;
 	}
 
+	.faq-list {
+		width: calc(100% - 20px);
+		gap: 25px;
+	}
+
+	.faq-q-text {
+		font-size: 18px;
+	}
+
+	.faq-cta .btn-primary {
+		padding: 20px 30px;
+		white-space: nowrap;
+	}
+
 	:root {
 		--side-pad: 20px;
 	}
@@ -1601,7 +1615,7 @@ footer > p {
 	.hero-title {
 		display: block !important;
 		width: 100% !important;
-		font-size: 28px !important;
+		font-size: clamp(18px, 5vw, 28px) !important;
 		line-height: 1.5 !important;
 		white-space: normal !important;
 		text-align: center !important;
@@ -1613,7 +1627,7 @@ footer > p {
 	}
 
 	.hero-desc {
-		font-size: 12px;
+		font-size: 14px;
 	}
 
 	.scratch-container {
@@ -1940,7 +1954,7 @@ footer > p {
 
 	footer {
 		width: 100vw;
-		padding: 100px 5vw 50px;
+		padding: 100px 10px 50px;
 	}
 
 	.footer-logo {

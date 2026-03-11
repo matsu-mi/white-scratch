@@ -145,6 +145,10 @@ h3 span {
 	font-weight: 600;
 }
 
+.sp-br {
+	display: none;
+}
+
 .text-highlight {
 	display: inline-block;
 	/* 蛍光ペン風の黄色ライン（下半分に色を乗せる） */
@@ -1506,6 +1510,10 @@ footer > p {
 
 	.text-sub {
 		display: inline !important;
+	}
+
+	.sp-br {
+		display: block;
 	}
 
 	:root {
